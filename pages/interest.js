@@ -4,11 +4,15 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Dropdown } from "@nextui-org/react";
-import { v4 as uuidv4 } from "uuid";
 const Interest = () => {
   // Dropdow k liye
-  // const [ask, setAsk] = React.useState(new Set([""]));
-  const [ask, setAsk] = React.useState("");
+  const [ask, setAsk] = React.useState(
+    new Set(["Highest Level Of Qualification"])
+  );
+  const [army, setArmy] = React.useState(new Set(["Select from here..."]));
+  const [gender, setGender] = React.useState(new Set(["Select from here..."]));
+  const [age, setAge] = React.useState(new Set(["Select from here..."]));
+
   const selectedValue = React.useMemo(
     () => Array.from(ask).join("").replaceAll("_", " "),
     [ask]
@@ -20,15 +24,16 @@ const Interest = () => {
   const router = useRouter();
   useEffect(() => {
     console.log("lindsdfdsf;:", ask);
-    console.log("lind;:", ask);
-    if (ask.anchorKey) {
+    console.log("lind;:", ask.anchorKey);
+    if (ask.anchorKey && army.anchorKey && gender.anchorKey && age.anchorKey) {
       setDisabled(false);
       console.log("lllllll");
     } else {
       setDisabled(true);
       console.log("akhiii");
     }
-  }, [ask]);
+  }, [ask, army, gender, age]);
+
   useEffect(() => {
     const myuser = JSON.parse(localStorage.getItem("myuser"));
     if (myuser && myuser.token) {
@@ -54,9 +59,12 @@ const Interest = () => {
     let res = await a.json();
     console.log("res:-", res);
     setAsk(res.ask);
+    setAge(res.age);
+    setGender(res.gender)
+    setArmy(res.army)
   };
   const handleUserSubmit = async () => {
-    let data = { token: user.token, ask };
+    let data = { token: user.token, ask, age, gender, army };
     let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateinterest`, {
       method: "POST",
       headers: {
@@ -101,22 +109,20 @@ const Interest = () => {
         </h1>
         <h2 className="font-bold text-xl">1. Your current details </h2>
         <div className="mx-auto flex my-2">
-          <div className="px-2 w-1/2">
+          <div className="md:flex md:space-x-5 px-2 w-1/2">
             <div className="mb-4">
-              <label htmlFor="ask" className="leading-7 text-sm text-gray-600">
+              <div className="flex justify-center items-center leading-7 text-sm text-gray-600">
                 Highest level of Qualification
-              </label>
-              <Dropdown id={uuidv4()} className="w-24 bg-slate-900">
+              </div>
+              <Dropdown>
                 <Dropdown.Button
                   flat
                   color="secondary"
                   css={{
                     tt: "capitalize",
-                    width: "$30",
                   }}
                 >
                   {selectedValue}
-                  {/* {ask} */}
                 </Dropdown.Button>
                 <Dropdown.Menu
                   aria-label="Single selection actions"
@@ -126,11 +132,103 @@ const Interest = () => {
                   selectedKeys={ask}
                   onSelectionChange={setAsk}
                 >
-                  <Dropdown.Item key="text">Text</Dropdown.Item>
-                  <Dropdown.Item key="number">Number</Dropdown.Item>
-                  <Dropdown.Item key="date">Date</Dropdown.Item>
-                  <Dropdown.Item key="single_date">Single Date</Dropdown.Item>
-                  <Dropdown.Item key="iteration">Iteration</Dropdown.Item>
+                  <Dropdown.Item key="10th/ITI">10th / ITI</Dropdown.Item>
+                  <Dropdown.Item key="12th">12th</Dropdown.Item>
+                  <Dropdown.Item key="Diploma">Diploma</Dropdown.Item>
+                  <Dropdown.Item key="Graduate">Graduate</Dropdown.Item>
+                  <Dropdown.Item key="LAW Graduate">LAW Graduate</Dropdown.Item>
+                  <Dropdown.Item key="BE/BTech/B.Arch">
+                    BE / BTech / B.Arch
+                  </Dropdown.Item>
+                  <Dropdown.Item key="BA/BSC/BCA">BA / BSC / BCA</Dropdown.Item>
+                  <Dropdown.Item key="MSC Computer">MSC Computer</Dropdown.Item>
+                  <Dropdown.Item key="MA/MSc/MCA">MA / MSc / MCA</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <div className="mb-4">
+              <div className="flex justify-center items-center leading-7 text-sm text-gray-600">
+                Forces type
+              </div>
+              <Dropdown>
+                <Dropdown.Button
+                  flat
+                  color="secondary"
+                  css={{
+                    tt: "capitalize",
+                  }}
+                >
+                  {army}
+                </Dropdown.Button>
+                <Dropdown.Menu
+                  aria-label="Single selection actions"
+                  color="secondary"
+                  disallowEmptySelection
+                  selectionMode="single"
+                  selectedKeys={army}
+                  onSelectionChange={setArmy}
+                >
+                  <Dropdown.Item key="Indian Army">Indian Army</Dropdown.Item>
+                  <Dropdown.Item key="Indian Navy">Indian Navy</Dropdown.Item>
+                  <Dropdown.Item key="Indian Air Force">
+                    Indian Air Force
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <div className="mb-4">
+              <div className="flex justify-center items-center leading-7 text-sm text-gray-600">
+                Select Gender
+              </div>
+              <Dropdown>
+                <Dropdown.Button
+                  flat
+                  color="secondary"
+                  css={{
+                    tt: "capitalize",
+                  }}
+                >
+                  {gender}
+                </Dropdown.Button>
+                <Dropdown.Menu
+                  aria-label="Single selection actions"
+                  color="secondary"
+                  disallowEmptySelection
+                  selectionMode="single"
+                  selectedKeys={gender}
+                  onSelectionChange={setGender}
+                >
+                  <Dropdown.Item key="Male">Male</Dropdown.Item>
+                  <Dropdown.Item key="Female">Female</Dropdown.Item>
+                  <Dropdown.Item key="Others">Others</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <div className="mb-4">
+              <div className="flex justify-center items-center leading-7 text-sm text-gray-600">
+                Your Age
+              </div>
+              <Dropdown>
+                <Dropdown.Button
+                  flat
+                  color="secondary"
+                  css={{
+                    tt: "capitalize",
+                  }}
+                >
+                  {age}
+                </Dropdown.Button>
+                <Dropdown.Menu
+                  aria-label="Single selection actions"
+                  color="secondary"
+                  disallowEmptySelection
+                  selectionMode="single"
+                  selectedKeys={age}
+                  onSelectionChange={setAge}
+                >
+                  <Dropdown.Item key="Male">Male</Dropdown.Item>
+                  <Dropdown.Item key="Female">Female</Dropdown.Item>
+                  <Dropdown.Item key="Others">Others</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>

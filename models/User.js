@@ -11,7 +11,10 @@ const UserSchema = new mongoose.Schema(
     tel: { type: String, default: "" },
     password: { type: String, required: true },
     confirmpassword: { type: String, required: true },
-    ask: { type: String, default: "Select from here..." },
+    ask: { type: String, default: "" },
+    age: { type: String, default: "" },
+    gender: { type: String, default: "" },
+    army: { type: String, default: "" },
   },
   { timestamps: true }
 );

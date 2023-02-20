@@ -10,6 +10,9 @@ const handler = async (req, res) => {
       { email: user.email },
       {
         ask: req.body.ask.anchorKey,
+        age: req.body.age.anchorKey,
+        gender: req.body.gender.anchorKey,
+        army: req.body.army.anchorKey,
       }
     );
 
