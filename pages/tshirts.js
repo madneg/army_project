@@ -13,17 +13,17 @@ const Tshirts = () => {
   const [disabled, setDisabled] = useState(true);
   const router = useRouter();
 
-  useEffect(() => {
-    const myuser = JSON.parse(localStorage.getItem("myuser"));
-    if (myuser && myuser.token) {
-      setUser(myuser);
-      setEmail(myuser.email);
-      fetchData(myuser.token);
-    }
-    if (!myuser) {
-      router.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const myuser = JSON.parse(localStorage.getItem("myuser"));
+  //   if (myuser && myuser.token) {
+  //     setUser(myuser);
+  //     setEmail(myuser.email);
+  //     fetchData(myuser.token);
+  //   }
+  //   if (!myuser) {
+  //     router.push("/");
+  //   }
+  // }, []);
 
   const fetchData = async (token) => {
     let data = { token: token };

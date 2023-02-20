@@ -11,10 +11,12 @@ const UserSchema = new mongoose.Schema(
     tel: { type: String, default: "" },
     password: { type: String, required: true },
     confirmpassword: { type: String, required: true },
-    ask: { type: String, default: "" },
-    age: { type: String, default: "" },
-    gender: { type: String, default: "" },
-    army: { type: String, default: "" },
+    ask: { type: String, default: "Highest Level Of Qualification" },
+    agedate: { type: String, default: "-" },
+    agemonth: { type: String, default: "-" },
+    ageyear: { type: String, default: "-" },
+    gender: { type: String, default: "Select Gender" },
+    army: { type: String, default: "Forces Type" },
   },
   { timestamps: true }
 );

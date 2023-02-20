@@ -8,12 +8,32 @@ const handler = async (req, res) => {
     console.log(user);
     let dbuser = await User.findOne({ email: user.email });
     console.log(dbuser);
-    const { name, email, address, pin, tel, ask, age, gender, army } = dbuser;
-    console.log(name, email, address, pin, tel, ask, age, gender, army);
-
-    res
-      .status(200)
-      .json({ name, email, address, pin, tel, ask, age, gender, army });
+    const {
+      name,
+      email,
+      address,
+      pin,
+      tel,
+      ask,
+      agedate,
+      agemonth,
+      ageyear,
+      gender,
+      army,
+    } = dbuser;
+    res.status(200).json({
+      name,
+      email,
+      address,
+      pin,
+      tel,
+      ask,
+      agedate,
+      agemonth,
+      ageyear,
+      gender,
+      army,
+    });
   } else {
     res.status(400).json({ error: "error" });
   }
