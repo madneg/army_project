@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema(
     tel: { type: String, default: "" },
     password: { type: String, required: true },
     confirmpassword: { type: String, required: true },
-    ask: { type: String, default: "Highest Level Of Qualification" },
+    study: { type: String, default: "Highest Qualification" },
     agedate: { type: String, default: "-" },
     agemonth: { type: String, default: "-" },
     ageyear: { type: String, default: "-" },

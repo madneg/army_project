@@ -9,12 +9,12 @@ const handler = async (req, res) => {
     let dbuser = await User.findOneAndUpdate(
       { email: user.email },
       {
-        ask: req.body.ask.anchorKey,
+        study: req.body.study,
         agedate: req.body.agedate,
         agemonth: req.body.agemonth,
         ageyear: req.body.ageyear,
-        gender: req.body.gender.anchorKey,
-        army: req.body.army.anchorKey,
+        gender: req.body.gender,
+        army: req.body.army,
       }
     );
 

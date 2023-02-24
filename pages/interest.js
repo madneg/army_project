@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Dropdown } from "@nextui-org/react";
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 const Interest = () => {
   const [agedate, setAgeDate] = useState("-");
   const [agemonth, setAgeMonth] = useState("-");
@@ -62,8 +62,11 @@ const Interest = () => {
     setAgeDate(birthDate);
     setAgeMonth(birthMonth);
     setAgeYear(birthYear);
-    console.log("dfgdfg", birthDate, birthMonth, birthYear);
-    console.log("ah: ", birthDate, birthMonth, birthYear);
+
+    let elems = document.querySelectorAll(".agecal");
+    [].forEach.call(elems, function (el) {
+      el.classList.remove("hidden");
+    });
   }
 
   function displayResult(bDate, bMonth, bYear) {
@@ -80,7 +83,7 @@ const Interest = () => {
     }
   }
   // Dropdow k liye
-  const [study, setStudy] = useState("Highest Level Of Qualification");
+  const [study, setStudy] = useState("Highest Qualification");
   const [gender, setGender] = useState("Select Gender");
   const [army, setArmy] = useState("Forces Type");
   const [email, setEmail] = useState("");
@@ -95,8 +98,19 @@ const Interest = () => {
     console.log("agedate", agedate);
     console.log("agemonth", agemonth);
     console.log("ageyear", ageyear);
+    router.push({
+      pathname: "/tshirts",
+      query: {
+        study,
+        gender,
+        army,
+        agedate,
+        agemonth,
+        ageyear,
+      },
+    });
     if (
-      study !== "Highest Level Of Qualification" &&
+      study !== "Highest Qualification" &&
       army !== "Forces Type" &&
       gender !== "Select Gender" &&
       agedate !== "-" &&
@@ -264,264 +278,236 @@ const Interest = () => {
           pauseOnHover
           theme="light"
         />
-        <h1 className="flex justify-center items-center font-bold text-2xl my-5 md:mt-10">
-          Enter your interest
+        <h1 className="flex justify-center items-center font-bold xl:text-2xl lg:text-xl md:text-xl sm:text-xs mx-auto text-slate-600 my-5 md:mt-10  dark:text-white">
+          Choose filters to best results of your interest
         </h1>
-        <h2 className="font-bold text-xl">1. Your current details </h2>
-        <div className="mx-auto flex my-2">
-          <div className="md:flex md:space-x-5 px-2 w-1/2">
-            <div className="mb-4">
-              <div className="flex justify-center items-center leading-7 text-sm text-gray-600">
-                Highest level of Qualification
-              </div>
-              <button
-                onClick={togglebuttton1}
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button"
-              >
-                {study}
-                <svg
-                  className="w-4 h-4 ml-2"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+        <div className="px-2 flex space-x-2">
+          <div className="mb-4">
+            <button
+              onClick={togglebuttton1}
+              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-300 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              type="button"
+            >
+              {study}
+              <BiChevronDown className="droh1 text-xl" />
+              <BiChevronUp className="droh1 hidden text-xl" />
+            </button>
+            <div className="droh1 my-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-36 dark:bg-gray-700">
+              <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                <li
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  onClick={() => handleItemClick("10th / ITI")}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div className="droh1 my-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-36 dark:bg-gray-700">
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                  <li
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => handleItemClick("10th / ITI")}
+                  10th / ITI
+                </li>
+                <li
+                  onClick={() => handleItemClick("12th")}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  12th
+                </li>
+                <li
+                  onClick={() => handleItemClick("Diploma")}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Diploma
+                </li>
+                <li>
+                  <button
+                    onClick={togglebuttton2}
+                    type="button"
+                    className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    10th / ITI
-                  </li>
-                  <li
-                    onClick={() => handleItemClick("12th")}
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    12th
-                  </li>
-                  <li
-                    onClick={() => handleItemClick("Diploma")}
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Diploma
-                  </li>
-                  <li>
-                    <button
-                      onClick={togglebuttton2}
-                      type="button"
-                      className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    U.G
+                    <svg
+                      aria-hidden="true"
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      U.G
-                      <svg
-                        aria-hidden="true"
-                        className="w-4 h-4"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
+                      <path
+                        fillRule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div className="droh2 absolute mx-36 -my-6 z-10 hidden bg-white rounded-lg shadow w-36 dark:bg-gray-700">
+                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                      <li
+                        onClick={() => handleItemClick("Graduate")}
+                        className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </button>
-                    <div className="droh2 absolute mx-36 -my-6 z-10 hidden bg-white rounded-lg shadow w-36 dark:bg-gray-700">
-                      <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                        <li
-                          onClick={() => handleItemClick("Graduate")}
-                          className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Graduate
-                        </li>
-                        <li
-                          onClick={() => handleItemClick("LAW Graduate")}
-                          className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          LAW Graduate
-                        </li>
-                        <li
-                          onClick={() => handleItemClick("BE / BTech / B.Arch")}
-                          className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          BE / BTech / B.Arch
-                        </li>
-                        <li
-                          onClick={() => handleItemClick("BA / BSC / BCA")}
-                          className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          BA / BSC / BCA
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <button
-                      onClick={togglebuttton3}
-                      type="button"
-                      className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        Graduate
+                      </li>
+                      <li
+                        onClick={() => handleItemClick("LAW Graduate")}
+                        className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        LAW Graduate
+                      </li>
+                      <li
+                        onClick={() => handleItemClick("BE / BTech / B.Arch")}
+                        className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        BE / BTech / B.Arch
+                      </li>
+                      <li
+                        onClick={() => handleItemClick("BA / BSC / BCA")}
+                        className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        BA / BSC / BCA
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <button
+                    onClick={togglebuttton3}
+                    type="button"
+                    className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    P.G
+                    <svg
+                      aria-hidden="true"
+                      className="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      P.G
-                      <svg
-                        aria-hidden="true"
-                        className="w-4 h-4"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
+                      <path
+                        fillRule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div className="droh3 absolute mx-36 -my-6 z-10 hidden bg-white rounded-lg shadow w-36 dark:bg-gray-700">
+                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                      <li
+                        onClick={() => handleItemClick("MSC Computer")}
+                        className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </button>
-                    <div className="droh3 absolute mx-36 -my-6 z-10 hidden bg-white rounded-lg shadow w-36 dark:bg-gray-700">
-                      <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                        <li
-                          onClick={() => handleItemClick("MSC Computer")}
-                          className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          MSC Computer
-                        </li>
-                        <li
-                          onClick={() => handleItemClick("MA / MSc / MCA")}
-                          className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          MA / MSc / MCA
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+                        MSC Computer
+                      </li>
+                      <li
+                        onClick={() => handleItemClick("MA / MSc / MCA")}
+                        className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        MA / MSc / MCA
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
             </div>
-            <div className="mb-4">
-              <div className="flex justify-center items-center leading-7 text-sm text-gray-600">
-                Select Gender
-              </div>
-              <button
-                onClick={togglebuttton11}
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button"
-              >
-                {gender}
-                <svg
-                  className="w-4 h-4 ml-2"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+          </div>
+          <div className="mb-4">
+            <button
+              onClick={togglebuttton11}
+              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-300 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              type="button"
+            >
+              {gender}
+              <BiChevronDown className="droh11 text-xl" />
+              <BiChevronUp className="droh11 hidden text-xl" />
+            </button>
+            <div className="droh11 my-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-28 dark:bg-gray-700">
+              <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                <li
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  onClick={() => handleItemClickgender("Male")}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div className="droh11 my-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-28 dark:bg-gray-700">
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                  <li
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => handleItemClickgender("Male")}
-                  >
-                    Male
-                  </li>
-                  <li
-                    onClick={() => handleItemClickgender("Female")}
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Female
-                  </li>
-                  <li
-                    onClick={() => handleItemClickgender("Others")}
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Others
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="mb-4">
-              <div className="flex justify-center items-center leading-7 text-sm text-gray-600">
-                Forces Type
-              </div>
-              <button
-                onClick={togglebuttton111}
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button"
-              >
-                {army}
-                <svg
-                  className="w-4 h-4 ml-2"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  Male
+                </li>
+                <li
+                  onClick={() => handleItemClickgender("Female")}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div className="droh111 my-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-36 dark:bg-gray-700">
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                  <li
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => handleItemClickarmy("Indian Army")}
-                  >
-                    Indian Army
-                  </li>
-                  <li
-                    onClick={() => handleItemClickarmy("Indian Navy")}
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Indian Navy
-                  </li>
-                  <li
-                    onClick={() => handleItemClickarmy("Indian AirForce")}
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Indian AirForce
-                  </li>
-                </ul>
-              </div>
+                  Female
+                </li>
+                <li
+                  onClick={() => handleItemClickgender("Others")}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Others
+                </li>
+              </ul>
             </div>
-            <div className="inputs-wrapper">
-              <input type="date" id="date-input" />
-              <button onClick={ageCalculate}>Calculate</button>
+          </div>
+          <div className="mb-4">
+            <button
+              onClick={togglebuttton111}
+              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-300 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              type="button"
+            >
+              {army}
+              <BiChevronDown className="droh11 text-xl" />
+              <BiChevronUp className="droh11 hidden text-xl" />
+            </button>
+            <div className="droh111 my-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-28 dark:bg-gray-700">
+              <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                <li
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  onClick={() => handleItemClickarmy("Indian Army")}
+                >
+                  Indian Army
+                </li>
+                <li
+                  onClick={() => handleItemClickarmy("Indian Navy")}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Indian Navy
+                </li>
+                <li
+                  onClick={() => handleItemClickarmy("Indian AirForce")}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Indian AirForce
+                </li>
+              </ul>
             </div>
-            <div className="outputs-wrapper">
+          </div>
+        </div>
+        <span className="text-xs md:text-sm font-bold dark:text-white text-slate-600  mx-7 justify-start text-center">
+          Enter your D.O.B
+        </span>
+        <div className="px-2 w-full md:space-x-6 flex">
+          <div className="inputs-wrapper flex space-x-2 w-3/5 md:w-2/5 lg:w-1/3 xl:w-1/5">
+            <input
+              type="date"
+              id="date-input"
+              className="rounded-md px-3 py-1 bg-gray-500 text-white text-base md:text-lg"
+            />
+
+            <button
+              onClick={ageCalculate}
+              className="bg-gray-500 dark:bg-slate-600 text-white rounded-md px-2 text-base md:text-lg"
+            >
+              Calculate
+            </button>
+          </div>
+          <div className="agecal hidden w-2/5 md:w-1/5 lg:w-1/12 text-center justify-center -my-4">
+            <div className="text-xs dark:text-green-300 text-green-900">
+              you are
+            </div>
+            <div className="outputs-wrapper flex space-x-2 text-center justify-center">
               <div>
                 <span id="years">{ageyear}</span>
-                <p>Years</p>
+                <p className="-my-2 text-xs">Years</p>
               </div>
               <div>
                 <span id="months">{agemonth}</span>
-                <p>Months</p>
+                <p className="-my-2 text-xs">Months</p>
               </div>
               <div>
                 <span id="days">{agedate}</span>
-                <p>Days</p>
+                <p className="-mt-2 text-xs">Days</p>
               </div>
+            </div>
+            <div className="text-xs dark:text-green-300 text-green-900">
+              old
             </div>
           </div>
         </div>
