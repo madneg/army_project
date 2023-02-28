@@ -1,410 +1,351 @@
-import { useRouter } from "next/router";
-import { BsFillBagCheckFill } from "react-icons/bs";
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import React from "react";
+import Link from "next/link";
 import Product from "@/models/Product";
 import mongoose from "mongoose";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Error from "next/error";
 
-const Post = ({ buyNow, addToCart, product, varients, error }) => {
-  // console.log(product);
-  // console.log("HApPY");
-  // console.log(varients);
-  const router = useRouter();
-  const { slug } = router.query;
-  const [pin, setpin] = useState();
-  const [service, setservice] = useState();
-
-  const [color, setColor] = useState();
-  const [size, setSize] = useState();
-  useEffect(() => {
-    if (!error) {
-      console.log(product.availableQty);
-      setColor(product.color);
-      setSize(product.size);
-    }
-  }, [router.query]);
-
-  const checkpincode = async () => {
-    let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
-    let pinJson = await pins.json();
-    if (Object.keys(pinJson).includes(pin)) {
-      setservice(true);
-      toast.success("Your Pincode is serviceable", {
-        position: "top-right",
-        autoClose: 1200,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    } else {
-      setservice(false);
-      toast.warn("Sorry! PinCode not serviceable", {
-        position: "top-right",
-        autoClose: 1200,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    }
-  };
-  const onChangePin = (e) => {
-    setpin(e.target.value);
-  };
-
-  const refreshVarients = (newSize, newColor) => {
-    let url = `${process.env.NEXT_PUBLIC_HOST}/product/${varients[newColor][newSize]["slug"]}`;
-    // window.location = url;To reload the page
-    router.push(url);
-  };
-  if (error == 404) {
-    return <Error statusCode={404} />;
-  }
+const Post = ({ product }) => {
+  console.log("product", product);
   return (
     <>
-      <section className="text-gray-600 body-font min-h-screen">
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
-        <div className="container px-5 py-24 mx-auto">
-          <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            <Image
-              alt="ecommerce"
-              className="object-cover object-top h-96 md:h-full block "
-              src={product.img}
-              width={400}
-              height={400}
-            />
-
-            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                BRAND NAME
-              </h2>
-              <h1 className="text-gray-900 text-2xl md:text-3xl title-font font-medium mb-1">
-                {product.title}({product.size}/{product.color})
-              </h1>
-              <div className="flex mb-4">
-                <span className="flex items-center">
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-green-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-green-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-green-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-green-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 text-green-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <span className="text-gray-600 ml-3">4 Reviews</span>
-                </span>
-                <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
+      <h2 className="flex justify-center items-center text-xl font-bold my-5">
+        How to join {product.title}
+      </h2>
+      <div className="container mx-auto px-4 md:text-base text-sm">
+        <div className="text-lg font-bold underline py-2 underline-offset-4">
+          Nationality
+        </div>
+        <div>A candidate must be an unmarried male and must be:-</div>
+        <ul>
+          <ol className="list-disc space-y-1 mt-1">
+            <li>A citizen of India, or</li>
+            <li>A subject of Nepal or</li>
+            <li>
+              A Tibetan refugee who came over to India before the 1st Jan, 1962
+              with the intention of permanently settling in India, or
+            </li>
+            <li>
+              A person of Indian origin who has migrated from Pakistan, Burma,
+              Sri Lanka and East African countries of Kenya, Uganda, the United
+              Republic of Tanzania, Zambia, Zaire and Ethiopia or Vietnam with
+              the intention of permanently settling in India.
+            </li>
+          </ol>
+        </ul>
+        <div className="my-5">
+          <b> Note:-</b> Provided that a candidate belonging to categories (2)
+          (3) & (4) above shall be a person in whose favour a certificate of
+          eligibility has been issued by the Govt of India. Certificate of
+          eligibility will not however, be necessary in the case of candidates
+          who are Gorkha subjects of Nepal.
+        </div>
+      </div>
+      <div className="container mx-auto px-4 md:text-base text-sm">
+        <div className="text-lg font-bold py-2 underline underline-offset-4">
+          Educational Qualification
+        </div>
+        <ol className="list-disc space-y-1 mb-4">
+          <li>
+            12th Pass of the 10+2 pattern of School or equivalent examination by
+            a State Education Board or a University.
+          </li>
+        </ol>
+        <div>
+          <b> Note:-</b> Candidates who are appearing in the 12th Class under
+          the 12+2 pattern of School Education or equivalent examination can
+          also apply for this examination.
+        </div>
+      </div>
+      <div className="container mx-auto px-4 mt-4 md:text-base text-sm">
+        <div className="text-lg font-bold py-2 underline underline-offset-4">
+          Physical/Medical Standards
+        </div>
+        <ul>
+          <ol className="list-disc space-y-1 mb-4">
+            <li>
+              Candidates must be physically and mentally fit according to
+              prescribed physical standards/guidelines given in Notification.
+            </li>
+            <li>
+              To be deemed 'Medically Fit' a candidate must be in good physical
+              and mental health and free from any disease /syndrome/disability
+              likely to interfere with the efficient performance of military
+              duties in any terrain, climate, season incl sea and air, in remote
+              areas, in austere conditions with no medical aid.
+            </li>
+            <li>
+              Candidate also should be free of medical conditions which require
+              frequent visit to medical facilities and use of any aid/drugs.
+            </li>
+          </ol>
+        </ul>
+        <div>
+          <b> Note:-</b> A candidate who has resigned or withdrawn on
+          disciplinary grounds from any of the training academies of Armed
+          Forces is not eligible to apply.
+        </div>
+      </div>
+      <div className="container mx-auto px-2 mt-4 flex flex-col">
+        <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+          <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="overflow-hidden">
+              <table className="min-w-full">
+                <thead className="bg-white border-b">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                    </svg>
-                  </a>
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
+                      Parameters
+                    </th>
+                    <th
+                      scope="col"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                    </svg>
-                  </a>
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
+                      Height (in cm)
+                    </th>
+                    <th
+                      scope="col"
+                      colSpan="3"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-start"
                     >
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>
-                  </a>
-                </span>
-              </div>
-              <p className="leading-relaxed">{product.desc}</p>
-
-              {product.availableQty < 5 && (
-                <div className="title-font font-medium text-2xl pt-2 text-red-600">
-                  Hurry up only {product.availableQty} items
-                </div>
-              )}
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                <div className="flex">
-                  <span className="mr-3">Color</span>
-                  {Object.keys(varients).includes("Red") &&
-                    Object.keys(varients["Red"]).includes(size) && (
-                      <button
-                        onClick={() => {
-                          refreshVarients(size, "Red");
-                        }}
-                        className={`border-2 bg-red-700 rounded-full w-6 h-6 focus:outline-none ${
-                          color === "Red" ? "border-black" : "border-gray-300"
-                        }`}
-                      ></button>
-                    )}
-                  {Object.keys(varients).includes("Blue") &&
-                    Object.keys(varients["Blue"]).includes(size) && (
-                      <button
-                        onClick={() => {
-                          refreshVarients(size, "Blue");
-                        }}
-                        className={`border-2 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none ${
-                          color === "Blue" ? "border-black" : "border-gray-300"
-                        }`}
-                      ></button>
-                    )}
-                  {Object.keys(varients).includes("Black") &&
-                    Object.keys(varients["Black"]).includes(size) && (
-                      <button
-                        onClick={() => {
-                          refreshVarients(size, "Black");
-                        }}
-                        className={`border-2 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none ${
-                          color === "Black" ? "border-black" : "border-gray-300"
-                        }`}
-                      ></button>
-                    )}
-                  {Object.keys(varients).includes("Pink") &&
-                    Object.keys(varients["Pink"]).includes(size) && (
-                      <button
-                        onClick={() => {
-                          refreshVarients(size, "Pink");
-                        }}
-                        className={`border-2 ml-1 bg-pink-700 rounded-full w-6 h-6 focus:outline-none ${
-                          color === "Pink" ? "border-black" : "border-gray-300"
-                        }`}
-                      ></button>
-                    )}
-                  {Object.keys(varients).includes("Green") &&
-                    Object.keys(varients["Green"]).includes(size) && (
-                      <button
-                        onClick={() => {
-                          refreshVarients(size, "Green");
-                        }}
-                        className={`border-2 ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none ${
-                          color === "Green" ? "border-black" : "border-gray-300"
-                        }`}
-                      ></button>
-                    )}
-                </div>
-                <div className="flex ml-6 items-center">
-                  <span className="mr-3">Size</span>
-                  <div className="relative">
-                    <select
-                      value={size}
-                      onChange={(e) => {
-                        refreshVarients(e.target.value, color);
-                      }}
-                      className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-green-200 focus:border-green-500 text-base pl-3 pr-10"
-                    >
-                      {color && Object.keys(varients[color]).includes("S") && (
-                        <option value={"S"}>S</option>
-                      )}
-                      {color && Object.keys(varients[color]).includes("M") && (
-                        <option value={"M"}>M</option>
-                      )}
-                      {color && Object.keys(varients[color]).includes("L") && (
-                        <option value={"L"}>L</option>
-                      )}
-                      {color && Object.keys(varients[color]).includes("XL") && (
-                        <option value={"XL"}>XL</option>
-                      )}
-                      {color &&
-                        Object.keys(varients[color]).includes("XXL") && (
-                          <option value={"XXL"}>XXL</option>
-                        )}
-                    </select>
-                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                      <svg
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        className="w-4 h-4"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M6 9l6 6 6-6"></path>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex">
-                {product.availableQty > 0 && (
-                  <div className="title-font font-medium text-2xl pt-2 text-gray-900">
-                    ₹{product.price}
-                  </div>
-                )}
-                {product.availableQty < 1 && (
-                  <div className="title-font font-medium text-red-600 text-sm md:text-lg lg:text-xl pt-2">
-                    Out of stock
-                  </div>
-                )}
-                <button
-                  disabled={product.availableQty < 1}
-                  onClick={() => {
-                    buyNow(
-                      slug,
-                      1,
-                      product.price,
-                      product.title,
-                      product.size,
-                      product.color
-                    );
-                  }}
-                  className="disabled:bg-slate-400 flex-none md:ml-10 lg:ml-10 ml-3 text-sm md:text-lg text-white bg-green-900 border-0 md:px-4 lg:px-6 px-2 md:py-2 lg:py-3 focus:outline-none hover:bg-green-800 rounded"
-                >
-                  Buy Now
-                </button>
-                <button
-                  disabled={product.availableQty < 1}
-                  onClick={() => {
-                    addToCart(
-                      slug,
-                      1,
-                      product.price,
-                      product.title,
-                      product.size,
-                      product.color
-                    );
-                    toast.info("Item is Added ...", {
-                      position: "top-right",
-                      autoClose: 1000,
-                      hideProgressBar: false,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                      theme: "colored",
-                    });
-                  }}
-                  className="disabled:bg-slate-400 flex-none md:ml-10 lg:ml-10 ml-2 text-sm md:text-lg text-white bg-green-900 border-0 md:px-4 lg:px-6 px-2 md:py-2 lg:py-3 focus:outline-none hover:bg-green-800 rounded"
-                >
-                  Add to cart
-                </button>
-                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 md:ml-16">
-                  <svg
-                    fill="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                  </svg>
-                </button>
-              </div>
-              <div className="flex pincode mt-6 space-x-5 md:space-x-7">
-                <input
-                  onChange={onChangePin}
-                  name="pincode"
-                  type="tel"
-                  minLength="6"
-                  maxLength="6"
-                  pattern="[0-9]"
-                  className="px-2 w-40 border-2 border-slate-400 rounded-md"
-                  placeholder="Enter your Pincode"
-                />
-                <button
-                  onClick={checkpincode}
-                  className="flex text-white bg-green-900 border-0 text-sm md:text-lg px-6 py-2 pl-3 pr-4 focus:outline-none hover:bg-green-800 rounded"
-                >
-                  Check
-                </button>
-              </div>
-              {!service && service != null && (
-                <div className="text-red-600 mt-2 text-sm ml-2">
-                  Sorry! We don't deliver to this pincode yet
-                </div>
-              )}
-              {service && service != null && (
-                <div className="text-green-600 mt-2 text-sm ml-2">
-                  Yah! This pincode is serviceable
-                </div>
-              )}
+                      Weight (in kgs)
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="bg-gray-300 border-b">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      Age
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      -
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      16-17 years
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      17-18 years
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      18-19 years
+                    </td>
+                  </tr>
+                  <tr className="bg-white border-b">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      Male Candidates
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      152-183
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      42.5-62.5
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      44-65
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      45-66.5
+                    </td>
+                  </tr>
+                  <tr className="bg-gray-300 border-b">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      Female Candidates
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      147-183
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      40-62.5
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      41- 65
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      42-66.5
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      <div className="container mx-auto px-4 mt-4 md:text-base text-sm">
+        <div className="text-lg font-bold py-2 underline underline-offset-4">
+          NDA Exam Syllabus Overview
+        </div>
+        <div className="flex flex-col -mx-2">
+          <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="overflow-hidden">
+                <table className="min-w-full">
+                  <thead className="bg-white border-b">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        Name of the Exam
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        National Defence Academy, NDA
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="bg-gray-300 border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Exam Conducting Body
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        Union Public Service Commission, UPSC
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Frequency of NDA Exam
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        Two times a year (NDA 1 & NDA 2)
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-300 border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Selection Process
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        Written Test consisting of Objective Type Questions
+                        Intelligence & Personality Test (SSB)
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Mode of exam
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        Offline (Pen and Paper mode)
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-300 border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Total Papers in NDA Exam
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        Mathematics General Ability Test (GAT)
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Total Marks for NDA Exam
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <li>Total: 900 Marks</li>
+                        <li>Mathematics: 300 Marks</li>
+                        <li>GAT: 600 Marks</li>
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-300 border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Total No. of Questions
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <li>Mathematics: 120</li>
+                        <li>GAT: 150</li>
+                      </td>
+                    </tr>
+                    <tr className="bg-white border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Negative Marking
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <li>Mathematics: -0.83</li>
+                        <li>GAT: -1.33 marks</li>
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-300 border-b">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        Exam Duration
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <li>Mathematics: 2 Hours 30 Minutes</li>
+                        <li>GAT: 2 Hours 30 Minutes</li>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mb-4">
+          Candidates can download the official NDA syllabus PDF to advance the
+          exam preparation and prepare a study plan accordingly. Click the link
+          below to download the UPSC NDA syllabus for different subjects of
+          Paper 1 and 2.
+          <div>
+            ☛ UPSC NDA Syllabus PDF -
+            <Link
+              href={"https://www.studyiq.com/articles/nda-syllabus/"}
+              target={"_blank"}
+            >
+              <span className="text-yellow-900 font-bold mx-3">
+                Download Here
+              </span>
+            </Link>
+          </div>
+        </div>
+        <div>
+          <b> Note:-</b> A candidate who has resigned or withdrawn on
+          disciplinary grounds from any of the training academies of Armed
+          Forces is not eligible to apply.
+        </div>
+      </div>
+      <div className="container mx-auto px-4 mt-4 md:text-base text-sm">
+        <div className="text-lg font-bold underline py-2 underline-offset-4">
+          NDA Salary during Training Period
+        </div>
+        <div>
+          During the training period, Officers get the NDA salary of ₹56,100/-
+          per month, which is the starting pay scale for this post. Army
+          Officers and equivalent Air Force and Navy ranks are entitled to
+          receive a stipend during the training process. Also, the benefits
+          related to the pay scale start with the training period itself. NDA
+          Stipend to Gentlemen Cadets during the entire duration of training in
+          Service Academies, i.e., during the training period, is admissible at
+          ₹56,100/- p.m. (Starting pay in Level 10).
+        </div>
+      </div>
+      <div className="container mx-auto px-4 mt-4 md:text-base text-sm">
+        <div className="text-lg font-bold underline py-2 underline-offset-4">
+          NDA Salary: Perks and Allowances
+        </div>
+        <div>
+          Employees also get allowances and benefits per their work and post,
+          along with the NDA salary. The details of various allowances and
+          benefits included in the NDA salary are below:
+          <ul>
+            <ol className="list-disc ml-4 mb-4">
+              <li>Uniform Allowance</li>
+              <li>As per the post-Compensatory Field Area Allowance</li>
+              <li>
+                As per the post, Compensatory Modified Field Area Allowance
+              </li>
+              <li>Dearness and Transport Allowance (DA/TA)</li>
+              <li>Para Allowance</li>
+              <li>Para jump instructor Allowance</li>
+              <li>Para Reserve Allowance</li>
+              <li>Technical Allowance Tier 1</li>
+              <li>Technical Allowance Tier 2</li>
+              <li>Special Forces Allowance</li>
+              <li>Children's Education Allowance</li>
+              <li>Hostel Subsidy</li>
+            </ol>
+          </ul>
+        </div>
+      </div>
     </>
   );
 };
@@ -418,29 +359,13 @@ export async function getServerSideProps(context) {
     return {
       props: {
         error: 404,
-      }, // will be passed to the page component as props
+      },
     };
   }
-  let varients = await Product.find({
-    title: product.title,
-    category: product.category,
-  });
-  let colorSizeSlug = {};
-  for (let item of varients) {
-    if (Object.keys(colorSizeSlug).includes(item.color)) {
-      colorSizeSlug[item.color][item.size] = { slug: item.slug };
-    } else {
-      colorSizeSlug[item.color] = {};
-      colorSizeSlug[item.color][item.size] = { slug: item.slug };
-    }
-  }
-
   return {
     props: {
-      error: error,
       product: JSON.parse(JSON.stringify(product)),
-      varients: JSON.parse(JSON.stringify(colorSizeSlug)),
-    }, // will be passed to the page component as props
+    },
   };
 }
 export default Post;

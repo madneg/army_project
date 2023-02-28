@@ -22,9 +22,6 @@ const Tshirts = ({ products }) => {
   const props = { study, gender, army, agedate, agemonth, ageyear };
   console.log("llmm age:-", props.ageyear);
   console.log("llmm month:-", props.agemonth);
-  if (props.ageyear == 16) {
-    console.log("agemonth ka test");
-  }
 
   // useEffect(() => {
   //   const myuser = JSON.parse(localStorage.getItem("myuser"));
@@ -243,7 +240,7 @@ const Tshirts = ({ products }) => {
                   </div>
                 </div>
 
-                <Link href={"/nda"}>
+                <Link href={`/product/${products[item].slug}`}>
                   <span
                     onClick={() => {
                       const elems = document.querySelectorAll(
