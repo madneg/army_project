@@ -285,7 +285,7 @@ const Interest = () => {
           <div className="mb-4">
             <button
               onClick={togglebuttton1}
-              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-300 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
               type="button"
             >
               {study}
@@ -406,7 +406,7 @@ const Interest = () => {
           <div className="mb-4">
             <button
               onClick={togglebuttton11}
-              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-300 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
               type="button"
             >
               {gender}
@@ -439,7 +439,7 @@ const Interest = () => {
           <div className="mb-4">
             <button
               onClick={togglebuttton111}
-              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-300 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
               type="button"
             >
               {army}

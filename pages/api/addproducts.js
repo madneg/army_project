@@ -1,19 +1,20 @@
 import Product from "@/models/Product";
 import connectDb from "@/middleware/mongoose";
 const handler = async (req, res) => {
-  if (req.method == 'POST') {
+  if (req.method == "POST") {
     // console.log(req.body)
     for (let i = 0; i < req.body.length; i++) {
       let p = new Product({
-        title: req.body[i].title,
+        army: req.body[i].army,
         slug: req.body[i].slug,
-        desc: req.body[i].desc,
-        img: req.body[i].img,
-        category: req.body[i].category,
-        size: req.body[i].size,
-        color: req.body[i].color,
-        price: req.body[i].price,
-        availableQty: req.body[i].availableQty,
+        study: req.body[i].study,
+        gender: req.body[i].gender,
+        title: req.body[i].title,
+        title_age: req.body[i].title_age,
+        title_qualification: req.body[i].title_qualification,
+        title_eligibility: req.body[i].title_eligibility,
+        title_post: req.body[i].title_post,
+        // availableQty: req.body[i].availableQty,
       });
       await p.save();
     }
