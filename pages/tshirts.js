@@ -12,6 +12,7 @@ import mongoose from "mongoose";
 
 const Tshirts = ({ products }) => {
   console.log("pppp", products);
+  const [warn, setWarn] = useState(false);
   const [email, setEmail] = useState("");
   const [user, setUser] = useState({ value: null });
   const [disabled, setDisabled] = useState(true);
@@ -37,7 +38,7 @@ const Tshirts = ({ products }) => {
 
   // const fetchData = async (token) => {
   //   let data = { token: token };
-  //   let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getproducts`, {
+  //   let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -46,10 +47,13 @@ const Tshirts = ({ products }) => {
   //   });
   //   console.log("zzzzz", a);
   //   let res = await a.json();
-  //   // console.log("res:-", res);
-  //   // console.log("res.study:-", res.study);
-  //   // setTenth(res.study);
-  //   // console.log("tenth", tenth);
+  //   console.log("res:-", res);
+  //   // setStudy(res.study);
+  //   // setAgeDate(res.agedate);
+  //   // setAgeMonth(res.agemonth);
+  //   // setAgeYear(res.ageyear);
+  //   // setGender(res.gender);
+  //   // setArmy(res.army);
   // };
   // toggle content
   function blur() {
@@ -66,6 +70,20 @@ const Tshirts = ({ products }) => {
       }
     });
   }
+  useEffect(() => {
+    setTimeout(() => {
+      let isEmpty = document.getElementById("cartContent").innerHTML === "";
+      console.log("isEmpty", isEmpty);
+      if (isEmpty) {
+        setWarn(true);
+      }
+      else{
+        setWarn(false);
+
+      }
+    }, 500);
+  }, [study, gender, army, agedate, agemonth, ageyear]);
+
   return (
     <>
       <section className="lll container m-auto">
@@ -87,7 +105,10 @@ const Tshirts = ({ products }) => {
                   selfies heirloom prism food truck ugh squid celiac humblebrag.
                 </p>
               </div>
-              <div className="flex flex-wrap justify-center items-center my-5">
+              <div
+                id="cartContent"
+                className="flex flex-wrap justify-center items-center my-5"
+              >
                 {Object.keys(products).map((item) => {
                   return (
                     (props.army === products[item].army ||
@@ -148,6 +169,7 @@ const Tshirts = ({ products }) => {
                   );
                 })}
               </div>
+              {warn && <div>dfs</div>}
               <button className="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 Button
               </button>

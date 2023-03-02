@@ -137,58 +137,58 @@ const Interest = () => {
   //   }
   // }, []);
 
-  const fetchData = async (token) => {
-    let data = { token: token };
-    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log("zzzzz", a);
-    let res = await a.json();
-    console.log("res:-", res);
-    setStudy(res.study);
-    setAgeDate(res.agedate);
-    setAgeMonth(res.agemonth);
-    setAgeYear(res.ageyear);
-    setGender(res.gender);
-    setArmy(res.army);
-  };
-  const handleUserSubmit = async () => {
-    let data = {
-      token: user.token,
-      study,
-      agedate,
-      agemonth,
-      ageyear,
-      gender,
-      army,
-    };
-    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateinterest`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log("zzzzz", a);
-    let res = await a.json();
-    console.log(res);
-    if (res.success) {
-      toast.success("Sucessfully Updated...", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeonClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
-  };
+  // const fetchData = async (token) => {
+  //   let data = { token: token };
+  //   let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   });
+  //   console.log("zzzzz", a);
+  //   let res = await a.json();
+  //   console.log("res:-", res);
+  //   setStudy(res.study);
+  //   setAgeDate(res.agedate);
+  //   setAgeMonth(res.agemonth);
+  //   setAgeYear(res.ageyear);
+  //   setGender(res.gender);
+  //   setArmy(res.army);
+  // };
+  // const handleUserSubmit = async () => {
+  //   let data = {
+  //     token: user.token,
+  //     study,
+  //     agedate,
+  //     agemonth,
+  //     ageyear,
+  //     gender,
+  //     army,
+  //   };
+  //   let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateinterest`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   });
+  //   console.log("zzzzz", a);
+  //   let res = await a.json();
+  //   console.log(res);
+  //   if (res.success) {
+  //     toast.success("Sucessfully Updated...", {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeonClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //     });
+  //   }
+  // };
   const handleItemClick = (itemName) => {
     setStudy(itemName);
     togglebuttton1();
@@ -285,7 +285,7 @@ const Interest = () => {
           <div className="mb-4">
             <button
               onClick={togglebuttton1}
-              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              className="text-white bg-gray-500 hover:bg-neutral-600 md:focus:ring-4 focus:ring-2 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
               type="button"
             >
               {study}
@@ -406,7 +406,7 @@ const Interest = () => {
           <div className="mb-4">
             <button
               onClick={togglebuttton11}
-              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              className="text-white bg-gray-500 hover:bg-neutral-600 md:focus:ring-4 focus:ring-2 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
               type="button"
             >
               {gender}
@@ -439,14 +439,14 @@ const Interest = () => {
           <div className="mb-4">
             <button
               onClick={togglebuttton111}
-              className="text-white bg-gray-500 hover:bg-neutral-600 focus:ring-4 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
+              className="text-white bg-gray-500 hover:bg-neutral-600 md:focus:ring-4 focus:ring-2 focus:outline-none focus:ring-neutral-600 rounded-lg text-xs md:text-base py-2 px-2 text-center flex items-center dark:bg-slate-300 dark:text-black dark:hover:bg-slate-400 dark:focus:ring-gray-800"
               type="button"
             >
               {army}
-              <BiChevronDown className="droh11 text-xl" />
-              <BiChevronUp className="droh11 hidden text-xl" />
+              <BiChevronDown className="droh111 text-xl" />
+              <BiChevronUp className="droh111 hidden text-xl" />
             </button>
-            <div className="droh111 my-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-28 dark:bg-gray-700">
+            <div className="droh111 my-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow md:w-32 w-28 dark:bg-gray-700">
               <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                 <li
                   className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -478,7 +478,7 @@ const Interest = () => {
             <input
               type="date"
               id="date-input"
-              className="rounded-md px-3 py-1 bg-gray-500 text-white text-base md:text-lg"
+              className="rounded-md px-3 py-1 bg-gray-500 text-white text-base md:text-lg cursor-pointer"
             />
 
             <button
@@ -512,13 +512,13 @@ const Interest = () => {
           </div>
         </div>
 
-        <button
+        {/* <button
           disabled={disabled}
           onClick={handleUserSubmit}
           className="flex text-white disabled:bg-green-400 bg-green-700 border-0 py-2 pl-3 pr-4 mt-3 mb-6 mx-2 focus:outline-none hover:bg-green-800 rounded"
         >
           submit
-        </button>
+        </button> */}
       </section>
     </>
   );

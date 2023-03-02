@@ -79,7 +79,7 @@ const Navbar = ({
           <Link href={"/tshirts"}>
             <li>Tshirts</li>
           </Link>
-          <Link href={"/hoodies"}>
+          {/* <Link href={"/hoodies"}>
             <li>Hoodies</li>
           </Link>
           <Link href={"/stickers"}>
@@ -87,7 +87,7 @@ const Navbar = ({
           </Link>
           <Link href={"/mugs"}>
             <li>Mugs</li>
-          </Link>
+          </Link> */}
         </ul>
       </div>
       <div className="cart absolute right-4 top-4 cursor-pointer flex">

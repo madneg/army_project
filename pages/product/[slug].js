@@ -8,7 +8,7 @@ const Post = ({ product }) => {
   return (
     <>
       <h2 className="flex justify-center items-center text-xl font-bold my-5">
-        How to join {product.title}
+        How To Join {product.title}
       </h2>
       <div className="container mx-auto px-4 md:text-base text-sm">
         <div className="text-lg font-bold underline py-2 underline-offset-4">
