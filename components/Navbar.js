@@ -7,6 +7,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 import { BsCartCheckFill } from "react-icons/bs";
 import { FaRegSurprise } from "react-icons/fa";
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import {
   AiOutlineShoppingCart,
   AiOutlinePlusCircle,
@@ -58,6 +59,12 @@ const Navbar = ({
     // }
   };
   const ref = useRef();
+  const togglebutttonnav = () => {
+    let elems = document.querySelectorAll(".drohnav");
+    [].forEach.call(elems, function (el) {
+      el.classList.toggle("hidden");
+    });
+  };
   return (
     <div className="flex flex-col md:flex-row md:justify-start justify-center items-center shadow-2xl mb-1 sticky py-2 top-0 bg-gray-400 z-10">
       <div className="logo mx-5 flex flex-col justify-center text-center items-center">
@@ -75,19 +82,49 @@ const Navbar = ({
         </Link>
       </div>
       <div className="nav">
-        <ul className="flex space-x-14 font-bold md:text-md">
+        <ul className="flex space-x-10 md:ml-10 my-4 md:mt-0 font-bold md:text-md">
+          <Link href={"/"}>
+            <li>Home</li>
+          </Link>
+          <div>
+            <button
+              onClick={togglebutttonnav}
+              className="text-sm font-bold md:text-base text-center flex items-center"
+              type="button"
+            >
+              About
+              <BiChevronDown className="drohnav text-xl" />
+              <BiChevronUp className="drohnav hidden text-xl" />
+            </button>
+            <div className="drohnav z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+              <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col absolute mt-2 bg-slate-200 rounded-md w-36">
+                <Link
+                  href={"/"}
+                  className="px-4 py-1 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-black"
+                >
+                  Indian Army
+                </Link>
+                <Link
+                  href={"/"}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-black"
+                >
+                  Indian Navy
+                </Link>
+                <Link
+                  href={"/"}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-black"
+                >
+                  Indian Air Force
+                </Link>
+              </ul>
+            </div>
+          </div>
           <Link href={"/tshirts"}>
-            <li>Tshirts</li>
+            <li>Services</li>
           </Link>
-          {/* <Link href={"/hoodies"}>
-            <li>Hoodies</li>
+          <Link href={"/tshirts"}>
+            <li>Contact Us</li>
           </Link>
-          <Link href={"/stickers"}>
-            <li>Stickers</li>
-          </Link>
-          <Link href={"/mugs"}>
-            <li>Mugs</li>
-          </Link> */}
         </ul>
       </div>
       <div className="cart absolute right-4 top-4 cursor-pointer flex">
