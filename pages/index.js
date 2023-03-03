@@ -1,13 +1,27 @@
 import Head from "next/head";
+import React from "react";
 import Image from "next/image";
+import Interest from "./interest";
+import { useRouter } from "next/router";
 import { Inter } from "@next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 import "bootstrap/dist/css/bootstrap.css";
+import Product from "@/models/Product";
+import mongoose from "mongoose";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+const Home = ({ products }) => {
+  console.log("olo", products);
+  const router = useRouter();
+  const {
+    query: { study, gender, army, agedate, agemonth, ageyear },
+  } = router;
+  const props = { study, gender, army, agedate, agemonth, ageyear };
+  console.log("hap", props.army);
+  console.log("llmm age:-", props.ageyear);
+  console.log("llmm month:-", props.agemonth);
   return (
     <>
       <div>
@@ -121,7 +135,7 @@ export default function Home() {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-        <section className="container dark:bg-slate-800">
+        <section className="container dark:bg-slate-800 h-96">
           <div className="flex flex-col text-center w-full">
             <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font my-4 text-gray-900 dark:text-gray-100 dark:bg-slate-700">
               Get the data of all defence forces on a single platform
@@ -136,16 +150,72 @@ export default function Home() {
               Check Eligilbiliy
             </Link>
           </div>
+          <div className="absolute right-10 bg-slate-300 w-1/4 p-4 rounded-md -mt-36">
+            <h2 className="flex justify-center items-center text-red-500 mb-3 text-lg font-bold">
+              Current Updates
+            </h2>
+            <p className="my-3">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo
+              nemo accusamus temporibus corporis corrupti impedit, minima
+              exercitationem consequatur ratione eaque deleniti aspernatur enim
+              dolorum, praesentium quae mollitia autem doloremque veritatis?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Similique maxime, itaque praesentium consectetur facilis ratione
+              iusto est iure quisquam ea impedit molestiae tenetur reprehenderit
+              nobis reiciendis illo mollitia nemo debitis.
+            </p>
+          </div>
         </section>
-        <div className="absolute right-10 bg-slate-300 w-1/4 p-2 rounded-md">
-          <h2 className="flex justify-center items-center">Current Updates</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo nemo
-            accusamus temporibus corporis corrupti impedit, minima
-            exercitationem consequatur ratione eaque deleniti aspernatur enim
-            dolorum, praesentium quae mollitia autem doloremque veritatis?
-          </p>
-        </div>
+        {/* <div className="flex flex-wrap justify-center items-center my-5">
+          {Object.keys(products).map((item) => {
+            return 
+            <div
+                  key={products[item]._id}
+                  onClick={() => {
+                    const elems = document.querySelectorAll(
+                      `.${products[item].slug}`
+                    );
+                    [].forEach.call(elems, function (el) {
+                      el.classList.toggle("hidden");
+                    });
+                    blur();
+                  }}
+                  className="xl:w-1/3 lg:w-1/3 md:w-1/2 w-full px-8 my-2 mx-2 py-6 border-l-2 border-gray-200 border-opacity-60 bg-slate-300 rounded-xl shadow-sm hover:bg-stone-300 hover:shadow-lg hover:rounded-md cursor-pointer"
+                >
+                  <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">
+                    {products[item].title}
+                  </h2>
+                  <div className="flex mb-2">
+                    <div className="leading-relaxed text-base font-semibold">
+                      <b> Age - </b>
+                      {products[item].title_age}
+                    </div>
+                  </div>
+                  <div className="flex mb-2">
+                    <div className="leading-relaxed text-base">
+                      <b>Qualification - </b>
+                      {products[item].title_qualification}
+                    </div>
+                  </div>
+                  <div className="flex mb-2">
+                    <div className="leading-relaxed text-base">
+                      <b>Eligibility - </b>
+                      {products[item].title_eligibility}
+                    </div>
+                  </div>
+                  <div className="flex mb-2">
+                    <div className="leading-relaxed text-base">
+                      <b>Post - </b>
+                      {products[item].title_post}
+                    </div>
+                  </div>
+               </div>
+              )
+            )
+          })}
+        </div> */}
         <Script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
@@ -154,4 +224,17 @@ export default function Home() {
       </div>
     </>
   );
+};
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGO_URL);
+  }
+  let products = await Product.find();
+
+  return {
+    props: {
+      products: JSON.parse(JSON.stringify(products)),
+    }, // will be passed to the page component as props
+  };
 }
+export default Home;
