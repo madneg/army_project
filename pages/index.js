@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
-
+import Link from "next/link";
+import Script from "next/script";
+import "bootstrap/dist/css/bootstrap.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +17,140 @@ export default function Home() {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
-        hdsfdsf
+        <Link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossOrigin="anonymous"
+        />
+        <div
+          id="carouselExampleCaptions"
+          className="carousel slide md:-mt-20 -mt-1"
+        >
+          <div className="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              className="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <Image
+                width={1000}
+                height={1000}
+                src="https://media.istockphoto.com/id/1454562653/photo/26-january-background-republic-day-india-and-republic-day-background-screen.jpg?s=612x612&w=0&k=20&c=LuIluzv105ci1Ut0X4XVk7zQ1yJ41dNOIcm4Yhc5O_0="
+                className="d-block w-full md:h-screen h-72"
+                alt="..."
+              />
+              <div className="carousel-caption d-none d-md-block my-5">
+                <h5 className="text-2xl mb-2">First slide label</h5>
+                <p className="text-2xl">
+                  Some representative placeholder content for the first slide.
+                </p>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <Image
+                width={1000}
+                height={1000}
+                src="https://static.theprint.in/wp-content/uploads/2020/02/Indian-Army-4.jpg"
+                className="d-block w-full md:h-screen h-72"
+                alt="..."
+              />
+              <div className="carousel-caption d-none d-md-block my-5">
+                <h5 className="text-2xl mb-2">First slide label</h5>
+                <p className="text-2xl">
+                  Some representative placeholder content for the first slide.
+                </p>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <Image
+                width={1000}
+                height={1000}
+                src="https://media.istockphoto.com/id/1454563213/photo/republic-day-celebration-gantantra-diwas-and-republic-day-art.jpg?s=612x612&w=0&k=20&c=dwklSQBICUQW_zNZO6LilAfb79Pj4X3X1lZnIY0_E7M="
+                className="d-block w-full md:h-screen h-72"
+                alt="..."
+              />
+              <div className="carousel-caption d-none d-md-block my-5">
+                <h5 className="text-2xl mb-2">First slide label</h5>
+                <p className="text-2xl">
+                  Some representative placeholder content for the first slide.
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+        <section className="container dark:bg-slate-800">
+          <div className="flex flex-col text-center w-full">
+            <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font my-4 text-gray-900 dark:text-gray-100 dark:bg-slate-700">
+              Get the data of all defence forces on a single platform
+            </h1>
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-lg dark:text-gray-300 -mt-4">
+              Check your eligibility criteria in the advanced search system ...
+            </p>
+            <Link
+              href={"/tshirts"}
+              className="flex mx-auto mt-4 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
+            >
+              Check Eligilbiliy
+            </Link>
+          </div>
+        </section>
+        <div className="absolute right-10 bg-slate-300 w-1/4 p-2 rounded-md">
+          <h2 className="flex justify-center items-center">Current Updates</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo nemo
+            accusamus temporibus corporis corrupti impedit, minima
+            exercitationem consequatur ratione eaque deleniti aspernatur enim
+            dolorum, praesentium quae mollitia autem doloremque veritatis?
+          </p>
+        </div>
+        <Script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+          crossOrigin="anonymous"
+        />
       </div>
     </>
   );

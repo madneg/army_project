@@ -8,10 +8,12 @@ import { BsArrowRight } from "react-icons/bs";
 import Interest from "./interest";
 import Link from "next/link";
 import Product from "@/models/Product";
+import Uproduct from "@/models/Uproduct";
 import mongoose from "mongoose";
 
-const Tshirts = ({ products }) => {
+const Tshirts = ({ products, uproducts }) => {
   console.log("pppp", products);
+  console.log("uproduct", uproducts);
   const [warn, setWarn] = useState(false);
   const [email, setEmail] = useState("");
   const [user, setUser] = useState({ value: null });
@@ -76,12 +78,22 @@ const Tshirts = ({ products }) => {
       console.log("isEmpty", isEmpty);
       if (isEmpty) {
         setWarn(true);
-      }
-      else{
+      } else {
         setWarn(false);
-
       }
     }, 500);
+    let isEmpty = document.getElementById("cartContent").innerHTML === "";
+    if (isEmpty) {
+      const elems = document.querySelectorAll(".updiv");
+      [].forEach.call(elems, function (el) {
+        el.classList.add("hidden");
+      });
+    } else {
+      const elems = document.querySelectorAll(".updiv");
+      [].forEach.call(elems, function (el) {
+        el.classList.remove("hidden");
+      });
+    }
   }, [study, gender, army, agedate, agemonth, ageyear]);
 
   return (
@@ -90,13 +102,13 @@ const Tshirts = ({ products }) => {
         <Interest />
         <>
           <section className="text-gray-600 body-font">
-            <div className="container px-3 py-24 mx-auto">
-              <div className="flex flex-col text-center w-full mb-20">
+            <div className="container px-3 py-14 mx-auto">
+              <div className="updiv flex flex-col text-center w-full mb-14">
                 <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">
                   Your Qualification :{props.study}
                 </h2>
                 <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font mb-4 text-gray-900 dark:text-gray-100">
-                  You can achieve the following Goals
+                  You Can Achieve The Following Goals
                 </h1>
                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base dark:text-gray-300">
                   Whatever cardigan tote bag tumblr hexagon brooklyn
@@ -169,7 +181,60 @@ const Tshirts = ({ products }) => {
                   );
                 })}
               </div>
-              {warn && <div>dfs</div>}
+              {warn && (
+                <>
+                  <div className="flex flex-col text-center w-full -my-10 mb-14">
+                    <h2 className="text-lg font-extrabold text-red-500 tracking-widest title-font mb-1">
+                      Oh No!....
+                    </h2>
+                    <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font mb-4 text-gray-900 dark:text-gray-100">
+                      As Per Your Filters , You Are Not Eligibile For Forces.
+                    </h1>
+                    <p className="lg:w-2/3 mx-auto leading-relaxed text-base dark:text-gray-300">
+                      We can suggest you some relative fields from which you can
+                      serve for nation.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap justify-center items-center my-5">
+                    {Object.keys(uproducts).map((item) => {
+                      return (
+                        <div
+                          key={uproducts[item]._id}
+                          className="xl:w-1/3 lg:w-1/3 md:w-1/2 w-full px-8 my-2 mx-2 py-6 border-l-2 border-gray-200 border-opacity-60 bg-slate-300 rounded-xl shadow-sm hover:bg-stone-300 hover:shadow-lg hover:rounded-md cursor-pointer"
+                        >
+                          <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">
+                            UPSC{uproducts[item].title}
+                          </h2>
+                          <div className="flex mb-2">
+                            <div className="leading-relaxed text-base font-semibold">
+                              <b> Age - </b>
+                              {uproducts[item].title_age}
+                            </div>
+                          </div>
+                          <div className="flex mb-2">
+                            <div className="leading-relaxed text-base">
+                              <b>Qualification - </b>
+                              {uproducts[item].title_qualification}
+                            </div>
+                          </div>
+                          <div className="flex mb-2">
+                            <div className="leading-relaxed text-base">
+                              <b>Eligibility - </b>
+                              {uproducts[item].title_eligibility}
+                            </div>
+                          </div>
+                          <div className="flex mb-2">
+                            <div className="leading-relaxed text-base">
+                              <b>Post - </b>
+                              {uproducts[item].title_post}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
               <button className="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 Button
               </button>
@@ -261,8 +326,7 @@ const Tshirts = ({ products }) => {
                     </ul>
                   </div>
                 </div>
-
-                <Link href={`/product/${products[item].slug}`}>
+                <Link target="_blank" href={`/product/${products[item].slug}`}>
                   <span
                     onClick={() => {
                       const elems = document.querySelectorAll(
@@ -335,8 +399,13 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URL);
   }
   let products = await Product.find();
+  let uproducts = await Uproduct.find();
+
   return {
-    props: { products: JSON.parse(JSON.stringify(products)) }, // will be passed to the page component as props
+    props: {
+      products: JSON.parse(JSON.stringify(products)),
+      uproducts: JSON.parse(JSON.stringify(uproducts)),
+    }, // will be passed to the page component as props
   };
 }
 export default Tshirts;
