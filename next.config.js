@@ -1,10 +1,15 @@
-// @type {import('next').NextConfig} 
+// @type {import('next').NextConfig}
 const nextConfig = {
   reactStrictMode: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["images.unsplash.com","m.media-amazon.com"],
+    domains: [
+      "images.unsplash.com",
+      "m.media-amazon.com",
+      "media.istockphoto.com",
+      "static.theprint.in",
+    ],
   },
 };
 
-module.exports =nextConfig;
+module.exports = nextConfig;

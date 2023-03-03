@@ -54,7 +54,7 @@ export default function Home() {
               <Image
                 width={1000}
                 height={1000}
-                src="/tom-podmore-qR9Qp_vDJL4-unsplash.jpg"
+                src="https://media.istockphoto.com/id/1454562653/photo/26-january-background-republic-day-india-and-republic-day-background-screen.jpg?s=612x612&w=0&k=20&c=LuIluzv105ci1Ut0X4XVk7zQ1yJ41dNOIcm4Yhc5O_0="
                 className="d-block w-full md:h-screen h-72"
                 alt="..."
               />
@@ -69,7 +69,7 @@ export default function Home() {
               <Image
                 width={1000}
                 height={1000}
-                src="/tom-podmore-qR9Qp_vDJL4-unsplash.jpg"
+                src="https://static.theprint.in/wp-content/uploads/2020/02/Indian-Army-4.jpg"
                 className="d-block w-full md:h-screen h-72"
                 alt="..."
               />
@@ -84,7 +84,7 @@ export default function Home() {
               <Image
                 width={1000}
                 height={1000}
-                src="/tom-podmore-qR9Qp_vDJL4-unsplash.jpg"
+                src="https://media.istockphoto.com/id/1454563213/photo/republic-day-celebration-gantantra-diwas-and-republic-day-art.jpg?s=612x612&w=0&k=20&c=dwklSQBICUQW_zNZO6LilAfb79Pj4X3X1lZnIY0_E7M="
                 className="d-block w-full md:h-screen h-72"
                 alt="..."
               />
@@ -137,10 +137,14 @@ export default function Home() {
             </Link>
           </div>
         </section>
-        <div className="absolute right-10 bg-slate-300 w-1/4">
-          Current Updates Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Tempora aut alias commodi ipsam debitis saepe beatae accusantium
-          obcaecati iusto fuga.
+        <div className="absolute right-10 bg-slate-300 w-1/4 p-2 rounded-md">
+          <h2 className="flex justify-center items-center">Current Updates</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo nemo
+            accusamus temporibus corporis corrupti impedit, minima
+            exercitationem consequatur ratione eaque deleniti aspernatur enim
+            dolorum, praesentium quae mollitia autem doloremque veritatis?
+          </p>
         </div>
         <Script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
