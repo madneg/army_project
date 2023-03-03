@@ -109,6 +109,7 @@ const Interest = () => {
         ageyear,
       },
     });
+
     if (
       study !== "Highest Qualification" &&
       army !== "Forces Type" &&
