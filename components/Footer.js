@@ -166,7 +166,7 @@ const Footer = () => {
                     <li className="fa fa-facebook"></li>
                   </a>{" "}
                 </div>
-                <p className="text-gray-500 text-sm text-center sm:text-left absolute right-10">
+                <p className="text-gray-500 text-sm text-center ml-4 sm:text-left md:absolute md:right-10">
                   Copyright © 2023 All right reserved by —
                   <a
                     href="/"

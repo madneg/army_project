@@ -159,7 +159,7 @@ const Home = ({ products }) => {
         </div>
         <section className="container dark:bg-slate-800">
           <div className="flex flex-col text-center w-full">
-            <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font my-4 text-gray-900 dark:text-gray-100 dark:bg-slate-700">
+            <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font my-4 text-gray-900 dark:text-gray-100">
               Get the data of all defence forces on a single platform
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-lg dark:text-gray-300 -mt-4">
@@ -167,7 +167,7 @@ const Home = ({ products }) => {
             </p>
             <Link
               href={"/tshirts"}
-              className="flex font-bold mx-auto mt-4 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
+              className="flex font-bold mx-auto my-4 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
             >
               Check Eligilbiliy
             </Link>
@@ -190,8 +190,8 @@ const Home = ({ products }) => {
             </p>
           </div> */}
         </section>
-        <section className="flex flex-wrap justify-center items-center my-5 space-x-5">
-          <div className="card w-1/4 border-2 border-gray-600 shadow-lg hover:border-4 hover:shadow-2xl">
+        <section className="md:flex md:flex-wrap justify-center items-center py-5 md:space-x-5 space-y-3 md:space-y-0 dark:bg-slate-500">
+          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-lg hover:border-4 hover:shadow-2xl">
             <Image
               width={300}
               height={300}
@@ -212,7 +212,7 @@ const Home = ({ products }) => {
               </Link>
             </div>
           </div>
-          <div className="card w-1/4 border-2 border-gray-600 shadow-xl hover:border-4 hover:shadow-2xl">
+          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-xl hover:border-4 hover:shadow-2xl">
             <Image
               width={300}
               height={300}
@@ -234,7 +234,7 @@ const Home = ({ products }) => {
               </Link>
             </div>
           </div>
-          <div className="card w-1/4 border-2 border-gray-600 shadow-lg hover:border-4 hover:shadow-2xl">
+          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-lg hover:border-4 hover:shadow-2xl">
             <Image
               width={500}
               height={500}

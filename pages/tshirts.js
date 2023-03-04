@@ -107,10 +107,10 @@ const Tshirts = ({ products, uproducts }) => {
                 {/* <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">
                   Your Qualification :{props.study}
                 </h2> */}
-                <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font mb-4 text-gray-900 dark:text-gray-100">
+                <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font mb-4 text-gray-900 dark:text-gray-700">
                   You Can Achieve The Following Goals
                 </h1>
-                <p className="lg:w-2/3 mx-auto leading-relaxed text-base dark:text-gray-300">
+                <p className="lg:w-2/3 mx-auto leading-relaxed text-base dark:text-gray-700">
                   Whatever cardigan tote bag tumblr hexagon brooklyn
                   asymmetrical gentrify, subway tile poke farm-to-table. Franzen
                   you probably haven't heard of them man bun deep jianbing
@@ -119,7 +119,7 @@ const Tshirts = ({ products, uproducts }) => {
               </div>
               <div
                 id="cartContent"
-                className="flex flex-wrap justify-center items-center my-5 bg-neutral-400 py-5 rounded-lg"
+                className="flex flex-wrap justify-center items-center my-5 md:bg-neutral-400 py-5 rounded-lg"
               >
                 {Object.keys(products).map((item) => {
                   return (
@@ -183,7 +183,7 @@ const Tshirts = ({ products, uproducts }) => {
               </div>
               {warn && (
                 <>
-                  <div className="flex flex-col text-center w-full -my-10 mb-14 bg-neutral-400 py-5 rounded-lg">
+                  <div className="flex flex-col text-center w-full -my-10 mb-14 md:bg-neutral-400 py-5 rounded-lg">
                     <h2 className="text-lg font-extrabold text-red-500 tracking-widest title-font mb-1">
                       Oh No!....
                     </h2>

@@ -66,7 +66,7 @@ const Navbar = ({
     });
   };
   return (
-    <div className="flex flex-col md:flex-row md:justify-start justify-center items-center shadow-2xl mb-1 sticky py-2 top-0 bg-gray-400 z-10">
+    <div className="flex flex-col md:flex-row md:justify-start justify-center items-center shadow-2xl mb-1 sticky py-2 top-0 bg-zinc-500 z-10">
       <div className="logo mx-5 flex flex-col justify-center text-center items-center">
         <Link href={"/"}>
           <Image
