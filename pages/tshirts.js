@@ -103,10 +103,10 @@ const Tshirts = ({ products, uproducts }) => {
         <>
           <section className="text-gray-600 body-font">
             <div className="container px-3 py-14 mx-auto">
-              <div className="updiv flex flex-col text-center w-full mb-14">
-                <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">
+              <div className="updiv flex flex-col text-center w-full mb-14 bg-neutral-400 py-5 rounded-lg">
+                {/* <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">
                   Your Qualification :{props.study}
-                </h2>
+                </h2> */}
                 <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font mb-4 text-gray-900 dark:text-gray-100">
                   You Can Achieve The Following Goals
                 </h1>
@@ -119,7 +119,7 @@ const Tshirts = ({ products, uproducts }) => {
               </div>
               <div
                 id="cartContent"
-                className="flex flex-wrap justify-center items-center my-5"
+                className="flex flex-wrap justify-center items-center my-5 bg-neutral-400 py-5 rounded-lg"
               >
                 {Object.keys(products).map((item) => {
                   return (
@@ -183,7 +183,7 @@ const Tshirts = ({ products, uproducts }) => {
               </div>
               {warn && (
                 <>
-                  <div className="flex flex-col text-center w-full -my-10 mb-14">
+                  <div className="flex flex-col text-center w-full -my-10 mb-14 bg-neutral-400 py-5 rounded-lg">
                     <h2 className="text-lg font-extrabold text-red-500 tracking-widest title-font mb-1">
                       Oh No!....
                     </h2>
@@ -195,7 +195,7 @@ const Tshirts = ({ products, uproducts }) => {
                       serve for nation.
                     </p>
                   </div>
-                  <div className="flex flex-wrap justify-center items-center my-5">
+                  <div className="flex flex-wrap justify-center items-center my-5 bg-neutral-400 py-5 rounded-lg">
                     {Object.keys(uproducts).map((item) => {
                       return (
                         <div
@@ -235,9 +235,9 @@ const Tshirts = ({ products, uproducts }) => {
                   </div>
                 </>
               )}
-              <button className="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              {/* <button className="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 Button
-              </button>
+              </button> */}
             </div>
           </section>
         </>

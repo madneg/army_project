@@ -8,6 +8,9 @@ const nextConfig = {
       "m.media-amazon.com",
       "media.istockphoto.com",
       "static.theprint.in",
+      "as2.ftcdn.net",
+      "img.etimg.com",
+      "images.news18.com",
     ],
   },
 };

@@ -109,7 +109,6 @@ const Interest = () => {
         ageyear,
       },
     });
-
     if (
       study !== "Highest Qualification" &&
       army !== "Forces Type" &&
@@ -266,7 +265,7 @@ const Interest = () => {
   };
   return (
     <>
-      <section className="container m-auto">
+      <section className="container m-auto bg-neutral-300 py-5 rounded-lg">
         <ToastContainer
           position="top-right"
           autoClose={3000}

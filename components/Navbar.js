@@ -122,7 +122,7 @@ const Navbar = ({
           <Link href={"/tshirts"}>
             <li>Services</li>
           </Link>
-          <Link href={"/tshirts"}>
+          <Link href={"/contact"}>
             <li>Contact Us</li>
           </Link>
         </ul>
@@ -172,13 +172,13 @@ const Navbar = ({
         </span>
         {!user.value && (
           <Link href={"/login"}>
-            <button className=" text-sm md:text-lg mx-3">Login</button>
+            <button className=" text-sm md:text-lg mx-3 bg-slate-300 p-2 rounded-lg">Login</button>
           </Link>
         )}
-        <AiOutlineShoppingCart
+        {/* <AiOutlineShoppingCart
           onClick={toggleCart}
           className=" text-xl md:text-3xl"
-        />
+        /> */}
       </div>
 
       {/* Cart is start */}

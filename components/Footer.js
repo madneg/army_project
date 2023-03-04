@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AiFillHome, AiOutlineMail } from "react-icons/ai";
+import { BsFillTelephoneFill } from "react-icons/bs";
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css"
@@ -13,129 +15,113 @@ const Footer = () => {
         <div className="bg-white items-center w-full">
           <footer className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-              <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-              <Link href={"/"}>
+              <div className="md:mx-0 mx-auto text-center md:text-left">
+                <Link href={"/"}>
                   <Image
                     src="/army_logo.png"
                     alt="asd"
-                    width={"50"}
-                    height={"50"}
+                    width={"70"}
+                    height={"70"}
                   ></Image>
                 </Link>
-                <p className="mt-2 text-sm text-gray-500">
-                SERVEIND.COM
-                </p>
-                
-              
+                <p className="mt-2 text-sm text-gray-500">SERVENATION</p>
               </div>
               <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
                 <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                  <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-                    CATEGORIES
+                  <h2 className="title-font font-bold text-yellow-700 tracking-widest text-base mb-3">
+                    ABOUT
                   </h2>
                   <nav className="list-none mb-10">
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        First Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Second Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Third Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Fourth Link
-                      </a>
-                    </li>
+                    <div className="mt-2">
+                      <Link
+                        href={"/"}
+                        className="text-gray-600 hover:text-gray-800"
+                      >
+                        Indian Army
+                      </Link>
+                    </div>
+                    <div className="mt-2">
+                      <Link
+                        href={"/"}
+                        className="text-gray-600 hover:text-gray-800"
+                      >
+                        Indian Navy
+                      </Link>
+                    </div>
+                    <div className="mt-2">
+                      <Link
+                        href={"/"}
+                        className="text-gray-600 hover:text-gray-800"
+                      >
+                        Indian Air Force
+                      </Link>
+                    </div>
                   </nav>
                 </div>
                 <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                  <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-                    CATEGORIES
+                  <h2 className="title-font font-bold text-yellow-700 tracking-widest text-base mb-3">
+                    SERVICES
                   </h2>
                   <nav className="list-none mb-10">
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        First Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Second Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Third Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Fourth Link
-                      </a>
-                    </li>
+                    <div className="mt-2">
+                      <Link
+                        href={"/tshirts"}
+                        className="text-gray-600 hover:text-gray-800"
+                      >
+                        Armed services
+                      </Link>
+                    </div>
                   </nav>
                 </div>
                 <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                  <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-                    CATEGORIES
+                  <h2 className="title-font font-extrabold tracking-widest text-base mb-3 text-yellow-700">
+                    USEFULL LINKS
                   </h2>
                   <nav className="list-none mb-10">
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        First Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Second Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Third Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Fourth Link
-                      </a>
-                    </li>
+                    <div className="mt-2">
+                      <Link
+                        href={"/"}
+                        className="text-gray-600 hover:text-gray-800"
+                      >
+                        Home
+                      </Link>
+                    </div>
+                    <div className="mt-2">
+                      <Link
+                        href={"/"}
+                        className="text-gray-600 hover:text-gray-800"
+                      >
+                        Contact Us
+                      </Link>
+                    </div>
+                    <div className="mt-2">
+                      <Link
+                        href={"/"}
+                        className="text-gray-600 hover:text-gray-800"
+                      >
+                        Indian Air Force
+                      </Link>
+                    </div>
                   </nav>
                 </div>
                 <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                  <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-                    CATEGORIES
+                  <h2 className="title-font font-bold text-yellow-700 tracking-widest text-base mb-3">
+                    Contact Us
                   </h2>
-                  <nav className="list-none mb-10">
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        First Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Second Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Third Link
-                      </a>
-                    </li>
-                    <li>
-                      <a className="text-gray-600 hover:text-gray-800">
-                        Fourth Link
-                      </a>
-                    </li>
-                  </nav>
+                  <div className="list-none">
+                    <div>
+                      <AiFillHome />
+                      Pilani,Rajasthan-333031,India
+                    </div>
+                    <p>
+                      <AiOutlineMail />
+                      asassociates0412@gmail.com
+                    </p>
+                    <p>
+                      <BsFillTelephoneFill />
+                      +91 7988505655
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -180,7 +166,7 @@ const Footer = () => {
                     <li className="fa fa-facebook"></li>
                   </a>{" "}
                 </div>
-                <p className="text-gray-500 text-sm text-center sm:text-left">
+                <p className="text-gray-500 text-sm text-center sm:text-left absolute right-10">
                   Copyright © 2023 All right reserved by —
                   <a
                     href="/"
@@ -196,7 +182,7 @@ const Footer = () => {
         </div>
       </div>
       <script src="https://cdn.tailwindcss.com"></script>
-      <script src="https://use.fontawesome.com/03f8a0ebd4.js"></script>{" "}
+      <script src="https://use.fontawesome.com/03f8a0ebd4.js"></script>
     </>
   );
 };

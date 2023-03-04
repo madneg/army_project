@@ -14,14 +14,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Home = ({ products }) => {
   console.log("olo", products);
-  const router = useRouter();
-  const {
-    query: { study, gender, army, agedate, agemonth, ageyear },
-  } = router;
-  const props = { study, gender, army, agedate, agemonth, ageyear };
-  console.log("hap", props.army);
-  console.log("llmm age:-", props.ageyear);
-  console.log("llmm month:-", props.agemonth);
   return (
     <>
       <div>
@@ -72,11 +64,21 @@ const Home = ({ products }) => {
                 className="d-block w-full md:h-screen h-72"
                 alt="..."
               />
-              <div className="carousel-caption d-none d-md-block my-5">
-                <h5 className="text-2xl mb-2">First slide label</h5>
-                <p className="text-2xl">
-                  Some representative placeholder content for the first slide.
+              <div className="carousel-caption d-none d-md-block my-5 absolute top-48">
+                <h5 className="text-3xl font-bold text-zinc-300">
+                  SERVENATION - "Serve the Nation, Strengthen the Future"
+                </h5>
+                <p className="text-2xl mt-5">
+                  "The willingness to serve for the nation is a testament to
+                  one's love and devotion for their country."
                 </p>
+                <p className="text-2xl my-3 text-gray-100">
+                  "Joining the armed forces is not just a career choice, it's a
+                  commitment to defend our nation and protect our freedoms."
+                </p>
+                <Link href={"/"} className="text-2xl text-gray-100">
+                  Join Us ...
+                </Link>
               </div>
             </div>
             <div className="carousel-item">
@@ -87,26 +89,46 @@ const Home = ({ products }) => {
                 className="d-block w-full md:h-screen h-72"
                 alt="..."
               />
-              <div className="carousel-caption d-none d-md-block my-5">
-                <h5 className="text-2xl mb-2">First slide label</h5>
-                <p className="text-2xl">
-                  Some representative placeholder content for the first slide.
+              <div className="carousel-caption d-none d-md-block my-5 absolute top-48">
+                <h5 className="text-3xl font-bold text-gray-800">
+                  SERVENATION - "Serve the Nation, Strengthen the Future"
+                </h5>
+                <p className="text-2xl mt-5 text-gray-500">
+                  "The willingness to serve for the nation is a testament to
+                  one's love and devotion for their country."
                 </p>
+                <p className="text-2xl my-3 text-gray-600">
+                  "Joining the armed forces is not just a career choice, it's a
+                  commitment to defend our nation and protect our freedoms."
+                </p>
+                <Link href={"/"} className="text-2xl text-gray-700">
+                  Join Us ...
+                </Link>
               </div>
             </div>
             <div className="carousel-item">
               <Image
                 width={1000}
                 height={1000}
-                src="https://media.istockphoto.com/id/1454563213/photo/republic-day-celebration-gantantra-diwas-and-republic-day-art.jpg?s=612x612&w=0&k=20&c=dwklSQBICUQW_zNZO6LilAfb79Pj4X3X1lZnIY0_E7M="
+                src="/1358662.jpg"
                 className="d-block w-full md:h-screen h-72"
                 alt="..."
               />
-              <div className="carousel-caption d-none d-md-block my-5">
-                <h5 className="text-2xl mb-2">First slide label</h5>
-                <p className="text-2xl">
-                  Some representative placeholder content for the first slide.
+              <div className="carousel-caption d-none d-md-block my-5 absolute top-48">
+                <h5 className="text-3xl font-bold text-gray-300">
+                  SERVENATION - "Serve the Nation, Strengthen the Future"
+                </h5>
+                <p className="text-2xl mt-5 text-gray-300">
+                  "The willingness to serve for the nation is a testament to
+                  one's love and devotion for their country."
                 </p>
+                <p className="text-2xl my-3 text-gray-300">
+                  "Joining the armed forces is not just a career choice, it's a
+                  commitment to defend our nation and protect our freedoms."
+                </p>
+                <Link href={"/"} className="text-2xl text-gray-100">
+                  Join Us ...
+                </Link>
               </div>
             </div>
           </div>
@@ -135,7 +157,7 @@ const Home = ({ products }) => {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-        <section className="container dark:bg-slate-800 h-96">
+        <section className="container dark:bg-slate-800">
           <div className="flex flex-col text-center w-full">
             <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font my-4 text-gray-900 dark:text-gray-100 dark:bg-slate-700">
               Get the data of all defence forces on a single platform
@@ -145,12 +167,12 @@ const Home = ({ products }) => {
             </p>
             <Link
               href={"/tshirts"}
-              className="flex mx-auto mt-4 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
+              className="flex font-bold mx-auto mt-4 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
             >
               Check Eligilbiliy
             </Link>
           </div>
-          <div className="absolute right-10 bg-slate-300 w-1/4 p-4 rounded-md -mt-36">
+          {/* <div className="bg-gray-400 border-2 border-black rounded-lg mt-5 p-3">
             <h2 className="flex justify-center items-center text-red-500 mb-3 text-lg font-bold">
               Current Updates
             </h2>
@@ -166,56 +188,76 @@ const Home = ({ products }) => {
               iusto est iure quisquam ea impedit molestiae tenetur reprehenderit
               nobis reiciendis illo mollitia nemo debitis.
             </p>
+          </div> */}
+        </section>
+        <section className="flex flex-wrap justify-center items-center my-5 space-x-5">
+          <div className="card w-1/4 border-2 border-gray-600 shadow-lg hover:border-4 hover:shadow-2xl">
+            <Image
+              width={300}
+              height={300}
+              src="https://as2.ftcdn.net/v2/jpg/03/14/63/11/1000_F_314631142_LHRv0woK2XJ82pRu6rqgcuWKhg8HLzpW.jpg"
+              className="card-img-top"
+              alt="..."
+            />
+            <div className="card-body">
+              <h5 className="card-title">Indian Army</h5>
+              <p className="card-text">
+                The Indian Army is the land-based branch and the largest
+                component of the Indian Armed Forces. The President of India is
+                the Supreme Commander of the Indian Army, and its professional
+                head is the Chief of Army Staff, who is a four-star general.
+              </p>
+              <Link href="/" className="btn btn-primary mt-3">
+                Learn More
+              </Link>
+            </div>
+          </div>
+          <div className="card w-1/4 border-2 border-gray-600 shadow-xl hover:border-4 hover:shadow-2xl">
+            <Image
+              width={300}
+              height={300}
+              src="https://img.etimg.com/thumb/msid-73281276,width-1200,height-900,imgsize-778178,overlay-etdefence/photo.jpg"
+              className="card-img-top"
+              alt="..."
+            />
+            <div className="card-body">
+              <h5 className="card-title">Indian Navy</h5>
+              <p className="card-text">
+                The Indian Navy is the maritime branch of the Indian Armed
+                Forces. The President of India is the Supreme Commander of the
+                Indian Navy. The Chief of Naval Staff, a four-star admiral,
+                commands the navy.The maritime history of India dates back 6,000
+                years to the Indus Valley civilisation.
+              </p>
+              <Link href="/" className="btn btn-primary mt-3">
+                Learn More
+              </Link>
+            </div>
+          </div>
+          <div className="card w-1/4 border-2 border-gray-600 shadow-lg hover:border-4 hover:shadow-2xl">
+            <Image
+              width={500}
+              height={500}
+              src="https://images.news18.com/ibnlive/uploads/2021/02/1612436324_pti02_04_2021_000111b-1.jpg?impolicy=website&width=0&height=0"
+              className="card-img-top"
+              alt="..."
+            />
+            <div className="card-body">
+              <h5 className="card-title">Indian Air Force</h5>
+              <p className="card-text">
+                The Indian Air Force is the air arm of the Indian Armed Forces.
+                Its complement of personnel and aircraft assets ranks as the
+                third most powerful air force in the world. Its primary mission
+                is to secure Indian airspace and to conduct aerial warfare
+                during armed conflicts.
+              </p>
+              <Link href="/" className="btn btn-primary mt-3">
+                Learn More
+              </Link>
+            </div>
           </div>
         </section>
-        {/* <div className="flex flex-wrap justify-center items-center my-5">
-          {Object.keys(products).map((item) => {
-            return 
-            <div
-                  key={products[item]._id}
-                  onClick={() => {
-                    const elems = document.querySelectorAll(
-                      `.${products[item].slug}`
-                    );
-                    [].forEach.call(elems, function (el) {
-                      el.classList.toggle("hidden");
-                    });
-                    blur();
-                  }}
-                  className="xl:w-1/3 lg:w-1/3 md:w-1/2 w-full px-8 my-2 mx-2 py-6 border-l-2 border-gray-200 border-opacity-60 bg-slate-300 rounded-xl shadow-sm hover:bg-stone-300 hover:shadow-lg hover:rounded-md cursor-pointer"
-                >
-                  <h2 className="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">
-                    {products[item].title}
-                  </h2>
-                  <div className="flex mb-2">
-                    <div className="leading-relaxed text-base font-semibold">
-                      <b> Age - </b>
-                      {products[item].title_age}
-                    </div>
-                  </div>
-                  <div className="flex mb-2">
-                    <div className="leading-relaxed text-base">
-                      <b>Qualification - </b>
-                      {products[item].title_qualification}
-                    </div>
-                  </div>
-                  <div className="flex mb-2">
-                    <div className="leading-relaxed text-base">
-                      <b>Eligibility - </b>
-                      {products[item].title_eligibility}
-                    </div>
-                  </div>
-                  <div className="flex mb-2">
-                    <div className="leading-relaxed text-base">
-                      <b>Post - </b>
-                      {products[item].title_post}
-                    </div>
-                  </div>
-               </div>
-              )
-            )
-          })}
-        </div> */}
+
         <Script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
