@@ -107,15 +107,15 @@ const Tshirts = ({ products, uproducts }) => {
                 {/* <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">
                   Your Qualification :{props.study}
                 </h2> */}
-                <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font mb-4 text-gray-900 dark:text-gray-700">
-                  You Can Achieve The Following Goals
+                <h1 className="sm:text-3xl pt-2 text-2xl font-medium title-font text-gray-900 dark:text-gray-700">
+                  Join Defence Forces Through These Mediums
                 </h1>
-                <p className="lg:w-2/3 mx-auto leading-relaxed text-base dark:text-gray-700">
+                {/* <p className="lg:w-2/3 mx-auto leading-relaxed text-base dark:text-gray-700">
                   Whatever cardigan tote bag tumblr hexagon brooklyn
                   asymmetrical gentrify, subway tile poke farm-to-table. Franzen
                   you probably haven't heard of them man bun deep jianbing
                   selfies heirloom prism food truck ugh squid celiac humblebrag.
-                </p>
+                </p> */}
               </div>
               <div
                 id="cartContent"
@@ -273,14 +273,7 @@ const Tshirts = ({ products, uproducts }) => {
                 <div className="p-4 ">
                   <div className="text-md font-semibold">Selection Process</div>
                   <p className="text-base mb-3 leading-relaxed justify-start text-left text-gray-500 dark:text-gray-400">
-                    The entrance test of the NDA is held twice a year i.e. NDA-I
-                    and NDA-II. The first notification is issued in January and
-                    the second notification comes around June. The first
-                    entrance exam is conducted around April and the second
-                    around September. NDA application form comprises of two
-                    parts. The examination is conducted by the Union Public
-                    Service Commission (UPSC) and the interested candidates can
-                    apply online at the official website
+                    {products[item].selection_title}
                     <Link
                       href={"https://www.upsc.gov.in"}
                       target={"_blank"}
@@ -296,17 +289,9 @@ const Tshirts = ({ products, uproducts }) => {
                   <div className="text-base mb-2 leading-relaxed justify-start text-start text-gray-500 dark:text-gray-400">
                     <ul>
                       <ol className="list-disc ml-2">
-                        <li>
-                          Good physical and mental health and free from any
-                          disease / disability
-                        </li>
-                        <li>
-                          The candidate should not under weight and overweight.
-                        </li>
-                        <li>
-                          Male (157 and 162.5 cm & 42.5 - 66.5 kgs) and Female
-                          (152 and 162.5 cm & 40 - 66.5 kgs)
-                        </li>
+                        <li>{products[item].selection_physical1}</li>
+                        <li>{products[item].selection_physical2}</li>
+                        <li>{products[item].selection_physical3}</li>
                       </ol>
                     </ul>
                   </div>
@@ -314,14 +299,12 @@ const Tshirts = ({ products, uproducts }) => {
                     Written Requirement
                   </div>
                   <div className="text-base leading-relaxed justify-start text-start text-gray-500 dark:text-gray-400">
-                    The entrance for National Defence Academy comprises of a
-                    written exam followed by and Intelligence and Personality
-                    test. The written test consists of two paper.
+                    {products[item].selection_writtenp}
                     <ul>
                       <ol className="list-disc ml-2">
-                        <li>Mathematics</li>
-                        <li>The General Ability Test</li>
-                        <li>Test/Interview</li>
+                        <li>{products[item].selection_writtenp1}</li>
+                        <li>{products[item].selection_writtenp2}</li>
+                        <li>{products[item].selection_writtenp3}</li>
                       </ol>
                     </ul>
                   </div>

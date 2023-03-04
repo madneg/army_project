@@ -76,7 +76,7 @@ const Home = ({ products }) => {
                   "Joining the armed forces is not just a career choice, it's a
                   commitment to defend our nation and protect our freedoms."
                 </p>
-                <Link href={"/"} className="text-2xl text-gray-100">
+                <Link href={"/tshirts"} className="text-2xl text-gray-100">
                   Join Us ...
                 </Link>
               </div>
@@ -101,7 +101,7 @@ const Home = ({ products }) => {
                   "Joining the armed forces is not just a career choice, it's a
                   commitment to defend our nation and protect our freedoms."
                 </p>
-                <Link href={"/"} className="text-2xl text-gray-700">
+                <Link href={"/tshirts"} className="text-2xl text-gray-700">
                   Join Us ...
                 </Link>
               </div>
@@ -115,18 +115,18 @@ const Home = ({ products }) => {
                 alt="..."
               />
               <div className="carousel-caption d-none d-md-block my-5 absolute top-48">
-                <h5 className="text-3xl font-bold text-gray-300">
+                <h5 className="text-3xl font-bold text-gray-900">
                   SERVENATION - "Serve the Nation, Strengthen the Future"
                 </h5>
-                <p className="text-2xl mt-5 text-gray-300">
+                <p className="text-2xl mt-5 text-gray-900">
                   "The willingness to serve for the nation is a testament to
                   one's love and devotion for their country."
                 </p>
-                <p className="text-2xl my-3 text-gray-300">
+                <p className="text-2xl my-3 text-gray-900">
                   "Joining the armed forces is not just a career choice, it's a
                   commitment to defend our nation and protect our freedoms."
                 </p>
-                <Link href={"/"} className="text-2xl text-gray-100">
+                <Link href={"/tshirts"} className="text-2xl text-gray-300">
                   Join Us ...
                 </Link>
               </div>
@@ -191,7 +191,7 @@ const Home = ({ products }) => {
           </div> */}
         </section>
         <section className="md:flex md:flex-wrap justify-center items-center py-5 md:space-x-5 space-y-3 md:space-y-0 dark:bg-slate-500">
-          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-lg hover:border-4 hover:shadow-2xl">
+          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-lg hover:bg-gray-100 hover:shadow-2xl">
             <Image
               width={300}
               height={300}
@@ -212,7 +212,7 @@ const Home = ({ products }) => {
               </Link>
             </div>
           </div>
-          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-xl hover:border-4 hover:shadow-2xl">
+          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-xl hover:bg-gray-100 hover:shadow-2xl">
             <Image
               width={300}
               height={300}
@@ -234,7 +234,7 @@ const Home = ({ products }) => {
               </Link>
             </div>
           </div>
-          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-lg hover:border-4 hover:shadow-2xl">
+          <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-lg hover:bg-gray-100 hover:shadow-2xl">
             <Image
               width={500}
               height={500}

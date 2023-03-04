@@ -152,11 +152,11 @@ const Navbar = ({
                     My Account
                   </li>
                 </Link>
-                <Link href={"/orders"}>
+                {/* <Link href={"/orders"}>
                   <li className="py-1 hover:text-white text-blue-100 font-bold">
                     My Orders
                   </li>
-                </Link>
+                </Link> */}
                 <li
                   onClick={logout}
                   className="py-1 hover:text-white text-blue-100 font-bold"

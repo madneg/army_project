@@ -14,7 +14,14 @@ const handler = async (req, res) => {
         title_qualification: req.body[i].title_qualification,
         title_eligibility: req.body[i].title_eligibility,
         title_post: req.body[i].title_post,
-        // availableQty: req.body[i].availableQty,
+        selection_title: req.body[i].selection_title,
+        selection_physical1: req.body[i].selection_physical1,
+        selection_physical2: req.body[i].selection_physical2,
+        selection_physical3: req.body[i].selection_physical3,
+        selection_writtenp: req.body[i].selection_writtenp,
+        selection_writtenp1: req.body[i].selection_writtenp1,
+        selection_writtenp2: req.body[i].selection_writtenp2,
+        selection_writtenp3: req.body[i].selection_writtenp3,
       });
       await p.save();
     }

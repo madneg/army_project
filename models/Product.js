@@ -12,8 +12,14 @@ const ProductSchema = new mongoose.Schema(
     title_qualification: { type: String, required: true },
     title_eligibility: { type: String, required: true },
     title_post: { type: String, required: true },
-    // price: { type: Number, required: true },
-    // availableQty: { type: String },
+    selection_title: { type: String, required: true },
+    selection_physical1: { type: String, required: true },
+    selection_physical2: { type: String, required: true },
+    selection_physical3: { type: String, required: true },
+    selection_writtenp: { type: String, required: true },
+    selection_writtenp1: { type: String, required: true },
+    selection_writtenp2: { type: String, required: true },
+    selection_writtenp3: { type: String, required: true },
   },
   { timestamps: true }
 );
