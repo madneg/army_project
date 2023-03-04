@@ -11,6 +11,7 @@ const nextConfig = {
       "as2.ftcdn.net",
       "img.etimg.com",
       "images.news18.com",
+      "th.bing.com",
     ],
   },
 };

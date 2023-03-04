@@ -12,7 +12,7 @@ const Contact = () => {
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
         crossOrigin="anonymous"
       />
-      <div className="container justify-center items-center mx-auto font-bold text-xl mt-4">
+      <div className="container justify-center items-center mx-auto font-bold text-xl mt-4 text-white">
         Fill the form , Our team will get back to you within 24hours
       </div>
       <form

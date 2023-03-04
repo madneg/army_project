@@ -157,12 +157,12 @@ const Home = ({ products }) => {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-        <section className="container dark:bg-slate-800">
-          <div className="flex flex-col text-center w-full">
-            <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font my-4 text-gray-900 dark:text-gray-100">
+        <section className="container">
+          <div className="flex flex-col text-center w-full text-white font-bold">
+            <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font my-4">
               Get the data of all defence forces on a single platform
             </h1>
-            <p className="lg:w-2/3 mx-auto leading-relaxed text-lg dark:text-gray-300 -mt-4">
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-lg -mt-4">
               Check your eligibility criteria in the advanced search system ...
             </p>
             <Link
@@ -190,7 +190,7 @@ const Home = ({ products }) => {
             </p>
           </div> */}
         </section>
-        <section className="md:flex md:flex-wrap justify-center items-center py-5 md:space-x-5 space-y-3 md:space-y-0 dark:bg-slate-500">
+        <section className="md:flex md:flex-wrap justify-center items-center py-5 md:space-x-5 space-y-3 md:space-y-0">
           <div className="card md:w-1/4 w-11/12 ml-4 border-2 border-gray-600 shadow-lg hover:bg-gray-100 hover:shadow-2xl">
             <Image
               width={300}

@@ -103,7 +103,7 @@ const Tshirts = ({ products, uproducts }) => {
         <>
           <section className="text-gray-600 body-font">
             <div className="container px-3 py-14 mx-auto">
-              <div className="updiv flex flex-col text-center w-full pb-14 bg-neutral-400 shadow-lg shadow-gray-400 py-5 rounded-lg">
+              <div className="updiv flex flex-col text-center w-full pb-14 py-5 ">
                 {/* <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">
                   Your Qualification :{props.study}
                 </h2> */}
@@ -119,7 +119,7 @@ const Tshirts = ({ products, uproducts }) => {
               </div>
               <div
                 id="cartContent"
-                className="flex flex-wrap justify-center items-center my-5 md:bg-neutral-400 shadow-xl shadow-gray-400 py-5 rounded-lg"
+                className="flex flex-wrap justify-center items-center my-5 py-5"
               >
                 {Object.keys(products).map((item) => {
                   return (
