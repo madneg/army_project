@@ -158,7 +158,7 @@ const Home = ({ products }) => {
           </button>
         </div>
         <section className="container">
-          <div className="flex flex-col text-center w-full text-white font-bold">
+          <div className="flex flex-col text-center w-full text-black font-bold">
             <h1 className="sm:text-3xl py-2 text-2xl font-medium title-font my-4">
               Get the data of all defence forces on a single platform
             </h1>
