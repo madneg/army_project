@@ -278,6 +278,7 @@ const Interest = () => {
           pauseOnHover
           theme="light"
         />
+
         <h1 className="flex justify-center items-center font-bold xl:text-2xl lg:text-xl md:text-xl sm:text-xs mx-auto text-slate-600 my-5 md:mt-10  dark:text-white">
           Choose filters to best results of your interest
         </h1>
