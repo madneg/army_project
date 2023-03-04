@@ -265,7 +265,7 @@ const Interest = () => {
   };
   return (
     <>
-      <section className="container m-auto md:bg-neutral-300 py-5 rounded-lg">
+      <section className="container m-auto md:bg-neutral-300 md:shadow-xl md:shadow-gray-400 md:px-5 py-5 rounded-lg">
         <ToastContainer
           position="top-right"
           autoClose={3000}

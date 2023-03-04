@@ -172,7 +172,9 @@ const Navbar = ({
         </span>
         {!user.value && (
           <Link href={"/login"}>
-            <button className=" text-sm md:text-lg mx-3 bg-slate-300 p-2 rounded-lg">Login</button>
+            <button className=" text-sm md:text-lg mx-3 bg-slate-300 text-gray-700 font-bold p-2 rounded-lg">
+              Login
+            </button>
           </Link>
         )}
         {/* <AiOutlineShoppingCart
